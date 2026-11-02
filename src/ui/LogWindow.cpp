@@ -7,10 +7,9 @@
 
 namespace neon::ui {
 
-void LogWindow::render(neon::core::Game& game) {
+void LogWindow::render_content(neon::core::Game& game) {
   (void)game;
-  if (!visible) return;
-  if (ImGui::Begin("Log", &visible)) {
+  {
     ImGui::PushFont(UITheme::instance().fonts.mono);
     auto lines = utils::LogBuffer::instance().snapshot(400);
     ImGui::BeginChild("##logscroll", ImVec2(0, 0), false, ImGuiWindowFlags_HorizontalScrollbar);

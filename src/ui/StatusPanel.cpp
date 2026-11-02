@@ -8,16 +8,9 @@
 
 namespace neon::ui {
 
-void StatusPanel::render(neon::core::Game& game) {
-  render_top_bar(game);
-  if (hq_visible) render_hq(game);
-}
-
-void StatusPanel::render_top_bar(neon::core::Game& game) {
+void StatusPanel::render_top_bar_content(neon::core::Game& game) {
   auto& s = game.state();
-  if (ImGui::Begin("##topbar", nullptr,
-                   ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoMove |
-                       ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoScrollbar)) {
+  {
     ImGui::PushFont(UITheme::instance().fonts.mono);
     ImGui::TextColored(ImGui::ColorConvertU32ToFloat4(theme::CYAN), "%s", s.time.format().c_str());
     ImGui::SameLine();
@@ -50,14 +43,12 @@ void StatusPanel::render_top_bar(neon::core::Game& game) {
       if (ImGui::SmallButton("Bribe (reduce heat)")) game.bribe();
     }
     ImGui::PopFont();
-    ImGui::End();
   }
 }
 
-void StatusPanel::render_hq(neon::core::Game& game) {
+void StatusPanel::render_hq_content(neon::core::Game& game) {
   auto& s = game.state();
-  if (ImGui::Begin("HQ")) {
-    if (ImGui::BeginTabBar("##hqtabs")) {
+  if (ImGui::BeginTabBar("##hqtabs")) {
       if (ImGui::BeginTabItem("Employees")) {
         ImGui::Text("Roster (%d/%d)", static_cast<int>(s.employees.size()), game.max_employees());
         if (ImGui::Button("Refresh job board (free)")) {
@@ -143,10 +134,8 @@ void StatusPanel::render_hq(neon::core::Game& game) {
         }
         ImGui::EndTabItem();
       }
-      ImGui::EndTabBar();
-    }
+    ImGui::EndTabBar();
   }
-  ImGui::End();
 }
 
 } // namespace neon::ui

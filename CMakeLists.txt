@@ -317,6 +317,11 @@ if(NEON_BUILD_GUI)
     SDL2_mixer::SDL2_mixer)
   target_compile_options(NeonGrid PRIVATE ${NEON_WARNING_FLAGS})
   set_target_properties(NeonGrid PROPERTIES OUTPUT_NAME "NeonGrid")
+  if(WIN32)
+    # GUI subsystem: no console window; the game runs standalone from a
+    # shortcut/Explorer (WinMain in src/main.cpp forwards to main).
+    set_target_properties(NeonGrid PROPERTIES WIN32_EXECUTABLE TRUE)
+  endif()
   add_dependencies(NeonGrid neon_generate_icon)
 
   # Installation / packaging rules (used by CI to build game.zip)

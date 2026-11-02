@@ -11,7 +11,8 @@ namespace neon::ui {
 // Scrollable/zoomable tech tree canvas with pan, node details and purchase.
 class TechTreeView {
 public:
-  void render(neon::core::Game& game);
+  // Renders the tech tree canvas (called inside a tab in the main console).
+  void render_content(neon::core::Game& game);
 
 private:
   float pan_x = 40.0f;

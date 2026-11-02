@@ -22,6 +22,10 @@ endif()
 target_link_libraries(CyberServerTycoonSetup PRIVATE installer_util)
 target_compile_options(CyberServerTycoonSetup PRIVATE ${NEON_WARNING_FLAGS})
 set_target_properties(CyberServerTycoonSetup PROPERTIES OUTPUT_NAME "CyberServerTycoonSetup")
+if(WIN32)
+  # GUI subsystem: double-clicking shows message boxes, not a console window.
+  set_target_properties(CyberServerTycoonSetup PROPERTIES WIN32_EXECUTABLE TRUE)
+endif()
 add_dependencies(CyberServerTycoonSetup neon_generate_icon)
 
 if(WIN32)

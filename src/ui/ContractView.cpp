@@ -9,12 +9,8 @@
 
 namespace neon::ui {
 
-void ContractView::render(neon::core::Game& game) {
+void ContractView::render_content(neon::core::Game& game) {
   auto& s = game.state();
-  if (!ImGui::Begin("Contracts")) {
-    ImGui::End();
-    return;
-  }
   ImGui::Text("Active %d/%d - board refreshes daily", static_cast<int>(s.contracts.active.size()),
               game.state().contracts.max_active(game));
   ImGui::Separator();
@@ -83,7 +79,6 @@ void ContractView::render(neon::core::Game& game) {
     }
     ImGui::EndTabBar();
   }
-  ImGui::End();
 }
 
 } // namespace neon::ui

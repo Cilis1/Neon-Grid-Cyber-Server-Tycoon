@@ -12,12 +12,12 @@ namespace neon::ui {
 // servers, cyberware, factions, bribes).
 class StatusPanel {
 public:
-  bool hq_visible = true;
-  void render(neon::core::Game& game);
+  // Inline top status bar (rendered at the top of the main console window).
+  void render_top_bar_content(neon::core::Game& game);
+  // HQ tab content (employees / remote servers / cyberware / factions / targets).
+  void render_hq_content(neon::core::Game& game);
 
 private:
-  void render_top_bar(neon::core::Game& game);
-  void render_hq(neon::core::Game& game);
   std::string selected_employee;
 };
 

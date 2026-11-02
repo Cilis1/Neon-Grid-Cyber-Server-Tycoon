@@ -46,6 +46,19 @@ void show_error(const std::string& msg, const std::filesystem::path& log_path) {
 #endif
 }
 
+// Optional GitHub PAT (for private repos). NEONGRID_GITHUB_TOKEN wins over GITHUB_TOKEN.
+std::string github_token() {
+  const char* t = std::getenv("NEONGRID_GITHUB_TOKEN");
+  if (!t || !*t) t = std::getenv("GITHUB_TOKEN");
+  return t ? t : "";
+}
+
+std::string describe(const neon::net::HttpResponse& r) {
+  std::string s = "HTTP " + std::to_string(r.status);
+  if (!r.error.empty()) s += " (" + r.error + ")";
+  return s;
+}
+
 } // namespace
 
 std::filesystem::path default_install_root() { return neon::utils::fs::app_data_dir(); }
@@ -78,7 +91,10 @@ bool launch_game(const std::filesystem::path& game_exe) {
   STARTUPINFOW si{};
   si.cb = sizeof(si);
   PROCESS_INFORMATION pi{};
-  if (CreateProcessW(nullptr, cmd.data(), nullptr, nullptr, FALSE, 0, nullptr,
+  // DETACHED_PROCESS: the game gets no console and is not killed when the
+  // installer's console (if any) closes - it runs standalone.
+  if (CreateProcessW(nullptr, cmd.data(), nullptr, nullptr, FALSE,
+                     DETACHED_PROCESS | CREATE_NEW_PROCESS_GROUP, nullptr,
                      game_exe.parent_path().wstring().c_str(), &si, &pi)) {
     CloseHandle(pi.hProcess);
     CloseHandle(pi.hThread);
@@ -111,14 +127,54 @@ int run_bootstrap(const BootstrapOptions& opts) {
   };
 
   // 1. Fetch the release manifest.
-  const std::string url = opts.version_url.empty() ? default_version_url(opts.repo) : opts.version_url;
+  const std::string token = github_token();
+  if (!token.empty())
+    log_line(log, "using GitHub token from environment (NEONGRID_GITHUB_TOKEN/GITHUB_TOKEN)", console);
+  std::string url = opts.version_url.empty() ? default_version_url(opts.repo) : opts.version_url;
   log_line(log, "fetching manifest: " + url, console);
-  auto body = http_get(url, 10);
-  if (!body) return fail("could not fetch version.json from " + url);
+  auto resp = http_get_ex(url, 10, token);
+  log_line(log, "GET " + url + " -> " + describe(resp), console);
+  if (!resp.ok() && opts.version_url.empty()) {
+    // Fallback: resolve the latest release via the GitHub API and use the
+    // version.json asset URL (needed for private repos with a PAT, and more
+    // robust than the /latest/ redirect in general).
+    const std::string api = "https://api.github.com/repos/" + opts.repo + "/releases/latest";
+    log_line(log, "fallback: querying " + api, console);
+    auto api_resp = http_get_ex(api, 15, token);
+    log_line(log, "GET " + api + " -> " + describe(api_resp), console);
+    if (api_resp.ok()) {
+      try {
+        const auto rel = json::parse(api_resp.body);
+        for (const auto& a : rel.value("assets", json::array())) {
+          if (a.value("name", std::string()) == "version.json" && a.contains("browser_download_url")) {
+            url = a["browser_download_url"].get<std::string>();
+            log_line(log, "resolved version.json via API: " + url, console);
+            resp = http_get_ex(url, 10, token);
+            log_line(log, "GET " + url + " -> " + describe(resp), console);
+            break;
+          }
+        }
+      } catch (const std::exception& e) {
+        log_line(log, "release API parse error: " + std::string(e.what()), console);
+      }
+    }
+  }
+  if (!resp.ok()) {
+    std::string hint;
+    if (resp.status == 404)
+      hint = " - HTTP 404 means the repository is private or has no published release;"
+             " make the repo public (Settings > Danger Zone) or set NEONGRID_GITHUB_TOKEN to a PAT with access";
+    else if (resp.status == 401 || resp.status == 403)
+      hint = " - HTTP " + std::to_string(resp.status) + ": bad or missing token for a private repo";
+    else if (resp.status == 0)
+      hint = " - no HTTP response (DNS/TLS/proxy problem)";
+    return fail("could not fetch version.json from " + url + " [" + describe(resp) + "]" + hint);
+  }
+  const std::string body = resp.body;
 
   json manifest;
   try {
-    manifest = json::parse(*body);
+    manifest = json::parse(body);
   } catch (const std::exception& e) {
     return fail(std::string("version.json parse error: ") + e.what());
   }
@@ -150,7 +206,7 @@ int run_bootstrap(const BootstrapOptions& opts) {
       ++attempts;
       ok = http_download(zip_url, zip_path, 300, [&](double pct) {
         if (console && static_cast<int>(pct) % 10 == 0) std::printf("[neongrid-setup]   %d%%\n", static_cast<int>(pct));
-      });
+      }, token);
       if (!ok) log_line(log, "download attempt " + std::to_string(attempts) + " failed", console);
     }
     if (!ok) return fail("download failed after retries: " + zip_url);
@@ -161,7 +217,7 @@ int run_bootstrap(const BootstrapOptions& opts) {
       log_line(log, "sha256: expected " + remote_sha + " got " + actual, console);
       if (neon::utils::to_lower(actual) != neon::utils::to_lower(remote_sha)) {
         log_line(log, "checksum mismatch, retrying download once", console);
-        if (!http_download(zip_url, zip_path, 300)) return fail("re-download failed");
+        if (!http_download(zip_url, zip_path, 300, nullptr, token)) return fail("re-download failed");
         actual = Sha256::file_hex(zip_path);
         if (neon::utils::to_lower(actual) != neon::utils::to_lower(remote_sha))
           return fail("sha256 mismatch after retry - download corrupted");
@@ -218,6 +274,17 @@ int run_bootstrap(const BootstrapOptions& opts) {
 // Entry point
 // ---------------------------------------------------------------------------
 int main(int argc, char** argv) {
+#ifdef _WIN32
+  // GUI-subsystem executable: when launched from a console (cmd/PowerShell),
+  // attach to it so progress logs still appear there. From a shortcut or
+  // Explorer there is no parent console; output goes to installer.log and
+  // errors are shown as message boxes.
+  if (AttachConsole(ATTACH_PARENT_PROCESS)) {
+    FILE* con = nullptr;
+    freopen_s(&con, "CONOUT$", "w", stdout);
+    freopen_s(&con, "CONOUT$", "w", stderr);
+  }
+#endif
   neon::installer::BootstrapOptions opts;
   for (int i = 1; i < argc; ++i) {
     std::string a = argv[i];

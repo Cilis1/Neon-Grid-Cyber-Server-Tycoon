@@ -10,11 +10,7 @@
 
 namespace neon::ui {
 
-void TechTreeView::render(neon::core::Game& game) {
-  if (!ImGui::Begin("Tech Tree")) {
-    ImGui::End();
-    return;
-  }
+void TechTreeView::render_content(neon::core::Game& game) {
   ImGui::Text("RP: %.0f   Credits: %s", game.state().rp, utils::format_credits(game.state().credits).c_str());
   ImGui::SameLine();
   ImGui::TextDisabled("(drag to pan, wheel to zoom)");
@@ -109,7 +105,6 @@ void TechTreeView::render(neon::core::Game& game) {
     }
   }
   ImGui::EndChild();
-  ImGui::End();
 }
 
 } // namespace neon::ui

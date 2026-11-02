@@ -9,12 +9,8 @@
 
 namespace neon::ui {
 
-void MarketView::render(neon::core::Game& game) {
+void MarketView::render_content(neon::core::Game& game) {
   auto& s = game.state();
-  if (!ImGui::Begin("Market")) {
-    ImGui::End();
-    return;
-  }
   ImGui::Text("Credits: %s", utils::format_credits(s.credits).c_str());
   ImGui::Separator();
   if (ImGui::BeginTabBar("##markettabs")) {
@@ -96,7 +92,6 @@ void MarketView::render(neon::core::Game& game) {
     }
     ImGui::EndTabBar();
   }
-  ImGui::End();
 }
 
 } // namespace neon::ui

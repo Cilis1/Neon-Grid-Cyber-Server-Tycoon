@@ -11,6 +11,12 @@
 // We provide our own console `main` (no SDL2main); stop SDL_main.h from
 // renaming `main` to `SDL_main` on Windows.
 #define SDL_MAIN_HANDLED
+#ifdef _WIN32
+#ifndef NOMINMAX
+#define NOMINMAX
+#endif
+#include <windows.h>
+#endif
 #include <SDL.h>
 #include <SDL_image.h>
 #include <SDL_mixer.h>
@@ -41,13 +47,6 @@ namespace {
 struct AppState {
   bool in_game = false;
   bool quit = false;
-  bool show_room = true;
-  bool show_tech = false;
-  bool show_netrun = false;
-  bool show_contracts = false;
-  bool show_market = false;
-  bool show_hq = false;
-  bool show_log = true;
   bool show_help = false;
   bool show_settings = false;
   std::uint64_t last_saved_day = 0;
@@ -151,7 +150,11 @@ int main(int argc, char** argv) {
   ImGuiIO& io = ImGui::GetIO();
   io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;
   io.ConfigFlags |= ImGuiConfigFlags_DockingEnable;
-  io.IniFilename = nullptr; // don't persist imgui.ini next to exe; keep it in app data
+  // Persist window/tab layout in app data (not next to the exe, which may be read-only).
+  std::error_code mk_ec;
+  std::filesystem::create_directories(utils::fs::app_data_dir(), mk_ec);
+  static const std::string ini_path = (utils::fs::app_data_dir() / "imgui.ini").string();
+  io.IniFilename = ini_path.c_str();
   ImGui::StyleColorsDark();
   ui::UITheme::instance().apply();
 
@@ -276,16 +279,6 @@ int main(int argc, char** argv) {
 
       if (ImGui::Begin("Neon Grid", nullptr, ImGuiWindowFlags_MenuBar)) {
         if (ImGui::BeginMenuBar()) {
-          if (ImGui::BeginMenu("Views")) {
-            ImGui::MenuItem("Server Room", nullptr, &app.show_room);
-            ImGui::MenuItem("Tech Tree", nullptr, &app.show_tech);
-            ImGui::MenuItem("Netrun", nullptr, &app.show_netrun);
-            ImGui::MenuItem("Contracts", nullptr, &app.show_contracts);
-            ImGui::MenuItem("Market", nullptr, &app.show_market);
-            ImGui::MenuItem("HQ", nullptr, &app.show_hq);
-            ImGui::MenuItem("Log", nullptr, &app.show_log);
-            ImGui::EndMenu();
-          }
           if (ImGui::BeginMenu("Game")) {
             if (ImGui::MenuItem("Save")) core::save_game(game, core::default_save_path());
             if (ImGui::MenuItem("Settings")) app.show_settings = true;
@@ -305,15 +298,25 @@ int main(int argc, char** argv) {
       }
       ImGui::End();
 
-      status_panel.hq_visible = app.show_hq;
-      status_panel.render(game);
-      if (app.show_room) room_view.render(game);
-      if (app.show_tech) tech_view.render(game);
-      if (app.show_netrun) netrun_view.render(game);
-      if (app.show_contracts) contract_view.render(game);
-      if (app.show_market) market_view.render(game);
-      if (app.show_log) log_window.render(game);
-      // HQ panel is rendered inside StatusPanel's window set; toggle via menu shows StatusPanel HQ window always
+      // One console window with a tab per game system: tabs always switch
+      // fully (and are reorderable/dockable via the docking branch).
+      if (ImGui::Begin("Console", nullptr, ImGuiWindowFlags_NoCollapse)) {
+        status_panel.render_top_bar_content(game);
+        ImGui::Separator();
+        if (ImGui::BeginTabBar("##maintabs", ImGuiTabBarFlags_Reorderable)) {
+          if (ImGui::BeginTabItem("Server Room")) { room_view.render_content(game); ImGui::EndTabItem(); }
+          if (ImGui::BeginTabItem("Inventory")) { room_view.render_inventory(game); ImGui::EndTabItem(); }
+          if (ImGui::BeginTabItem("Tech Tree")) { tech_view.render_content(game); ImGui::EndTabItem(); }
+          if (ImGui::BeginTabItem("Netrun")) { netrun_view.render_content(game); ImGui::EndTabItem(); }
+          if (ImGui::BeginTabItem("Contracts")) { contract_view.render_content(game); ImGui::EndTabItem(); }
+          if (ImGui::BeginTabItem("Market")) { market_view.render_content(game); ImGui::EndTabItem(); }
+          if (ImGui::BeginTabItem("HQ")) { status_panel.render_hq_content(game); ImGui::EndTabItem(); }
+          if (ImGui::BeginTabItem("Log")) { log_window.render_content(game); ImGui::EndTabItem(); }
+          ImGui::EndTabBar();
+        }
+      }
+      ImGui::End();
+
       if (app.show_help) render_help();
       if (app.show_settings) render_settings_dialog(game, app.show_settings);
     }
@@ -342,3 +345,10 @@ int main(int argc, char** argv) {
   spdlog::info("=== Neon Grid shutdown ===");
   return 0;
 }
+
+#ifdef _WIN32
+// The game is built as a GUI-subsystem executable (no console window). The
+// CRT entry point for /SUBSYSTEM:WINDOWS is WinMain, which forwards to main
+// (SDL_MAIN_HANDLED above keeps SDL from renaming main to SDL_main).
+int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) { return main(__argc, __argv); }
+#endif

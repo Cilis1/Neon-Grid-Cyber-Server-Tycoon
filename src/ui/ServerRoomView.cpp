@@ -44,28 +44,21 @@ static ImU32 tile_color(neon::core::Game& game, const Room& room, int idx) {
   return IM_COL32(0x14, 0x1A, 0x22, 0xFF);
 }
 
-void ServerRoomView::render(neon::core::Game& game) {
+void ServerRoomView::render_content(neon::core::Game& game) {
   render_room_tabs(game);
   render_gauges(game);
-  if (ImGui::Begin("Server Room")) {
-    ImGui::Columns(2, "##roomcols", false);
-    ImGui::SetColumnWidth(0, 560);
-    render_grid(game);
-    ImGui::NextColumn();
-    render_side_panel(game);
-    ImGui::Columns(1);
-  }
-  ImGui::End();
-
-  if (ImGui::Begin("Inventory")) {
-    render_inventory(game);
-  }
-  ImGui::End();
+  ImGui::Separator();
+  ImGui::Columns(2, "##roomcols", false);
+  ImGui::SetColumnWidth(0, 560);
+  render_grid(game);
+  ImGui::NextColumn();
+  render_side_panel(game);
+  ImGui::Columns(1);
 }
 
 void ServerRoomView::render_room_tabs(neon::core::Game& game) {
   auto& s = game.state();
-  if (ImGui::Begin("##roomtabs", nullptr, ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_NoResize)) {
+  {
     for (auto& [id, room] : s.rooms) {
       bool active = id == s.active_room;
       if (ImGui::Button((room.name + (active ? " *" : "")).c_str())) s.active_room = id;
@@ -74,7 +67,6 @@ void ServerRoomView::render_room_tabs(neon::core::Game& game) {
     if (ImGui::Button("+ Buy expansion room")) {
       game.expand_room(s.active_room);
     }
-    ImGui::End();
   }
 }
 
@@ -82,7 +74,7 @@ void ServerRoomView::render_gauges(neon::core::Game& game) {
   auto& s = game.state();
   Room& room = game.active_room();
   auto stats = game.room_stats(room.id);
-  if (ImGui::Begin("##gauges", nullptr, ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoMove)) {
+  {
     ImGui::Text("Power %.0f / %.0f W", stats.power_draw_w, stats.power_capacity_w);
     ImGui::SameLine();
     ImGui::ProgressBar(stats.power_capacity_w > 0 ? stats.power_draw_w / stats.power_capacity_w : 1.0f, ImVec2(140, 0),
@@ -106,7 +98,6 @@ void ServerRoomView::render_gauges(neon::core::Game& game) {
     if (stats.overloaded) {
       ImGui::TextColored(ImGui::ColorConvertU32ToFloat4(theme::MAGENTA), "WARNING: power draw exceeds capacity!");
     }
-    ImGui::End();
   }
 }
 

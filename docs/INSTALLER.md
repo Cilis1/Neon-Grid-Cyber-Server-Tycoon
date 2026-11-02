@@ -64,6 +64,37 @@ CyberServerTycoonSetup.exe --url http://127.0.0.1:8000/version.json --install-di
 On Linux the same flow works (shortcut creation is a no-op off-Windows):
 `./CyberServerTycoonSetup --url http://127.0.0.1:8000/version.json --install-dir /tmp/neongrid-test --no-launch`.
 
+## Private repositories (GitHub token)
+
+Release asset URLs (`/releases/download/...`) are only downloadable anonymously
+when the repository is **public**. If the repo is private, `version.json` fetch
+fails with HTTP 404. Two options:
+
+1. Make the repo public (Settings > Danger Zone > Change visibility) - the
+   default and recommended setup for a public game.
+2. Keep it private and set `NEONGRID_GITHUB_TOKEN` (or `GITHUB_TOKEN`) to a
+   personal access token with `repo` scope before running the setup exe. The
+   installer sends it as `Authorization: Bearer ...` on all requests and falls
+   back to the GitHub Releases API (`api.github.com/repos/<owner>/<repo>/releases/latest`)
+   to resolve the `version.json` asset. Example:
+
+   ```bat
+   set NEONGRID_GITHUB_TOKEN=ghp_...
+   CyberServerTycoonSetup.exe
+   ```
+
+Every attempt is logged with its HTTP status in `%LOCALAPPDATA%\NeonGrid\installer.log`,
+and the error dialog says whether the failure was a 404 (private repo / no
+release), an auth error (401/403), or a network problem (no HTTP response).
+
+## No console window
+
+Both `CyberServerTycoonSetup.exe` and `NeonGrid.exe` are built with the Windows
+**GUI subsystem** (`WIN32_EXECUTABLE`), so they run standalone from Explorer or
+a desktop shortcut - no command prompt needs to stay open. If you *do* launch
+the installer from a console, it attaches to it and prints progress there;
+errors are always shown as message boxes and written to `installer.log`.
+
 ## Uninstall
 
 Delete `%LOCALAPPDATA%\NeonGrid\` and the desktop shortcut. That's everything.

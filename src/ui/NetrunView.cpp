@@ -11,18 +11,9 @@ namespace neon::ui {
 using neon::netrunning::NetrunSession;
 using neon::netrunning::NodeType;
 
-void NetrunView::render(neon::core::Game& game) {
-  if (game.session()) {
-    if (ImGui::Begin("Netrun")) {
-      render_session(game);
-      ImGui::End();
-    }
-  } else {
-    if (ImGui::Begin("Netrun")) {
-      render_target_picker(game);
-      ImGui::End();
-    }
-  }
+void NetrunView::render_content(neon::core::Game& game) {
+  if (game.session()) render_session(game);
+  else render_target_picker(game);
 }
 
 void NetrunView::render_target_picker(neon::core::Game& game) {
