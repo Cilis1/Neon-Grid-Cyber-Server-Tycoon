@@ -96,7 +96,7 @@ int run_bootstrap(const BootstrapOptions& opts) {
   const std::filesystem::path game_dir = root / "game";
   const std::filesystem::path log_path = root / "installer.log";
   const std::filesystem::path version_file = root / "version.txt";
-  const std::filesystem::path zip_path =
+  const std::string zip_path =
       (std::filesystem::temp_directory_path() / "neongrid_game.zip").string();
 
   std::filesystem::create_directories(root);

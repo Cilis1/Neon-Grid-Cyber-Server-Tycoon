@@ -8,6 +8,9 @@
 #include <filesystem>
 #include <string>
 
+// We provide our own console `main` (no SDL2main); stop SDL_main.h from
+// renaming `main` to `SDL_main` on Windows.
+#define SDL_MAIN_HANDLED
 #include <SDL.h>
 #include <SDL_image.h>
 #include <SDL_mixer.h>

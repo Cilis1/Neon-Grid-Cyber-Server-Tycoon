@@ -338,6 +338,10 @@ endif()
 # ---------------------------------------------------------------------------
 if(NEON_BUILD_TESTS)
   enable_testing()
+  # Build Catch2 static so the test exes are self-contained (no DLL to load
+  # during Catch2's post-build test discovery on Windows).
+  set(_neon_saved_build_shared_libs "${BUILD_SHARED_LIBS}")
+  set(BUILD_SHARED_LIBS OFF CACHE BOOL "" FORCE)
   FetchContent_Declare(Catch2
     GIT_REPOSITORY https://github.com/catchorg/Catch2.git
     GIT_TAG v3.7.1
@@ -346,6 +350,11 @@ if(NEON_BUILD_TESTS)
   set(CATCH_INSTALL_EXAMPLES OFF CACHE BOOL "" FORCE)
   set(CATCH_BUILD_TESTING OFF CACHE BOOL "" FORCE)
   FetchContent_MakeAvailable(Catch2)
+  if(_neon_saved_build_shared_libs STREQUAL "")
+    unset(BUILD_SHARED_LIBS CACHE)
+  else()
+    set(BUILD_SHARED_LIBS "${_neon_saved_build_shared_libs}" CACHE BOOL "" FORCE)
+  endif()
   list(APPEND CMAKE_MODULE_PATH "${catch2_SOURCE_DIR}/extras")
   include(CTest)
   include(Catch)
