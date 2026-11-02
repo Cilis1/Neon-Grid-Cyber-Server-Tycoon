@@ -302,3 +302,9 @@ int main(int argc, char** argv) {
   }
   return neon::installer::run_bootstrap(opts);
 }
+
+#ifdef _WIN32
+// GUI-subsystem executable (WIN32_EXECUTABLE): the CRT entry point is
+// WinMain, which forwards to main() above.
+int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) { return main(__argc, __argv); }
+#endif
