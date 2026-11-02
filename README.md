@@ -45,7 +45,7 @@ game to the latest release automatically.
 
 ## Build from source (Windows)
 
-Requires CMake ≥ 3.24, Visual Studio 2022 (MSVC), Python 3 + Pillow (for the icon).
+Requires CMake ≥ 3.24, Visual Studio 2026 (MSVC; `cmake --preset windows-msvc`), Python 3 + Pillow (for the icon).
 All third-party dependencies are fetched automatically via `FetchContent` — no
 manual installs.
 

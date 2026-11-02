@@ -26,7 +26,7 @@ Presets available (see `CMakePresets.json`):
 
 | Preset | Purpose |
 | --- | --- |
-| `windows-msvc` / `windows-msvc-release` | Release build with VS2022 x64 |
+| `windows-msvc` / `windows-msvc-release` | Release build with VS2026 x64 |
 | `windows-msvc-debug` | Debug build |
 | `linux-dev` | Linux: core logic + tests only (no SDL GUI), for CI/dev on Linux |
 
