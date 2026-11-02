@@ -320,10 +320,11 @@ bool Game::install_part(const std::string& part_uid, const std::string& server_u
     if (!ok) return false;
   }
   if (part->tile_index == -1 && r.find(part_uid) == nullptr) {
+    hardware::Component copy = *part; // copy before erasing (would dangle otherwise)
     state_.inventory.erase(std::remove_if(state_.inventory.begin(), state_.inventory.end(),
                                           [&](const hardware::Component& c) { return c.uid == part_uid; }),
                            state_.inventory.end());
-    r.components.push_back(*part);
+    r.components.push_back(std::move(copy));
     part = r.find(part_uid);
     if (!part) return false;
   }
