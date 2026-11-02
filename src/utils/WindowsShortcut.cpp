@@ -42,8 +42,14 @@ bool create_shortcut(const ShortcutSpec& spec) {
   if (SUCCEEDED(hr)) {
     psl->SetPath(spec.target.wstring().c_str());
     if (!spec.working_dir.empty()) psl->SetWorkingDirectory(spec.working_dir.wstring().c_str());
-    if (!spec.description.empty()) psl->SetDescription(spec.description.c_str());
-    if (!spec.arguments.empty()) psl->SetArguments(spec.arguments.c_str());
+    if (!spec.description.empty()) {
+      const std::wstring wdesc(spec.description.begin(), spec.description.end());
+      psl->SetDescription(wdesc.c_str());
+    }
+    if (!spec.arguments.empty()) {
+      const std::wstring wargs(spec.arguments.begin(), spec.arguments.end());
+      psl->SetArguments(wargs.c_str());
+    }
     if (!spec.icon.empty()) {
       // Icon location: file path with optional index
       psl->SetIconLocation(spec.icon.wstring().c_str(), 0);

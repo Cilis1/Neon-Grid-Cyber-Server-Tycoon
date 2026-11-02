@@ -10,6 +10,11 @@ if(WIN32)
   enable_language(RC)
 endif()
 
+# Our code intentionally uses fopen/getenv; silence MSVC's C4996 deprecation noise
+if(MSVC)
+  add_compile_definitions(_CRT_SECURE_NO_WARNINGS NOMINMAX)
+endif()
+
 # ---------------------------------------------------------------------------
 # Global settings
 # ---------------------------------------------------------------------------
