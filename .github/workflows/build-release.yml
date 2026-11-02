@@ -115,6 +115,6 @@ jobs:
 
             Install with `CyberServerTycoonSetup.exe` - it downloads and verifies `game.zip` automatically.
           files: |
-            build/dl/staging/installer/CyberServerTycoonSetup.exe
+            build/dl/installer/CyberServerTycoonSetup.exe
             build/game.zip
             build/version.json
