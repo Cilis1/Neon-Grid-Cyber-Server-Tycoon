@@ -78,7 +78,7 @@ jobs:
       - name: Package game.zip
         shell: pwsh
         run: |
-          python scripts/pack_assets.py build/dl/staging build/game.zip
+          python scripts/pack_assets.py build/dl build/game.zip
 
       - name: Compute SHA256 of game.zip
         shell: pwsh
