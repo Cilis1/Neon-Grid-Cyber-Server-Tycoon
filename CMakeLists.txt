@@ -45,6 +45,10 @@ endif()
 # ---------------------------------------------------------------------------
 # Core dependencies (always needed): nlohmann/json + spdlog (header-only)
 # ---------------------------------------------------------------------------
+# Keep the install prefix lean: only our own install() rules (game exe, SDL
+# DLLs, data/, assets/) should land in the CI staging dir packed into game.zip.
+set(JSON_Install OFF CACHE BOOL "" FORCE)
+set(SPDLOG_INSTALL OFF CACHE BOOL "" FORCE)
 FetchContent_Declare(nlohmann_json
   GIT_REPOSITORY https://github.com/nlohmann/json.git
   GIT_TAG v3.11.3
@@ -59,6 +63,7 @@ FetchContent_MakeAvailable(nlohmann_json spdlog)
 # Lua 5.4 + sol2 (optional scripting layer)
 # ---------------------------------------------------------------------------
 if(NEON_USE_LUA)
+  set(SOL2_ENABLE_INSTALL OFF CACHE BOOL "" FORCE) # keep sol headers out of the staging dir
   FetchContent_Declare(lua_src
     GIT_REPOSITORY https://github.com/lua/lua.git
     GIT_TAG v5.4.7
@@ -99,6 +104,7 @@ if(NEON_USE_CURL)
     set(BUILD_TESTING OFF CACHE BOOL "" FORCE)
     set(CURL_DISABLE_LDAP ON CACHE BOOL "" FORCE)
     set(CURL_DISABLE_LDAPS ON CACHE BOOL "" FORCE)
+    set(CURL_DISABLE_INSTALL ON CACHE BOOL "" FORCE)
     if(WIN32)
       # Windows: SChannel gives HTTPS without external TLS deps (installer stays small)
       set(CURL_USE_SCHANNEL ON CACHE BOOL "" FORCE)
@@ -133,6 +139,7 @@ endif()
 set(_neon_saved_build_shared_libs "${BUILD_SHARED_LIBS}")
 set(BUILD_SHARED_LIBS OFF CACHE BOOL "" FORCE)
 set(MZ_BUILD_SHARED OFF CACHE BOOL "" FORCE)
+set(INSTALL_PROJECT OFF CACHE BOOL "" FORCE) # miniz: keep headers/libs out of the staging dir
 FetchContent_Declare(miniz
   GIT_REPOSITORY https://github.com/richgel999/miniz.git
   GIT_TAG 3.0.2
@@ -151,7 +158,7 @@ if(NEON_BUILD_GUI)
   set(SDL_SHARED ON CACHE BOOL "" FORCE)
   set(SDL_STATIC OFF CACHE BOOL "" FORCE)
   set(SDL_TEST_LIBRARY OFF CACHE BOOL "" FORCE)
-  set(SDL2_DISABLE_INSTALL OFF CACHE BOOL "" FORCE)
+  set(SDL2_DISABLE_INSTALL ON CACHE BOOL "" FORCE) # we only need the DLL via $<TARGET_FILE:...>, keep game.zip lean
   FetchContent_Declare(SDL2
     GIT_SUBMODULES ""
     GIT_REPOSITORY https://github.com/libsdl-org/SDL.git

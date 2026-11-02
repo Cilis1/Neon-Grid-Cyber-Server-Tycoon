@@ -10,6 +10,9 @@ import os
 import sys
 import zipfile
 
+# Top-level staging dirs that are build/dev artifacts, never game runtime files.
+SKIP_TOP_DIRS = {"include", "lib", "share", "bin"}
+
 
 def main():
     if len(sys.argv) != 3:
@@ -22,7 +25,12 @@ def main():
         return 1
     count = 0
     with zipfile.ZipFile(out, "w", zipfile.ZIP_DEFLATED) as z:
-        for base, _dirs, files in os.walk(staging):
+        for base, dirs, files in os.walk(staging):
+            rel_base = os.path.relpath(base, staging)
+            top = rel_base.split(os.sep)[0]
+            if rel_base != "." and top in SKIP_TOP_DIRS:
+                dirs[:] = []  # prune
+                continue
             for fn in files:
                 full = os.path.join(base, fn)
                 rel = os.path.relpath(full, staging)
