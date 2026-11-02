@@ -5,6 +5,11 @@ project(NeonGridCyberServerTycoon
   DESCRIPTION "Neon Grid: Cyber Server Tycoon - a cyberpunk server management game"
   LANGUAGES C CXX)
 
+# resources.rc (icon + version info) needs the RC language on Windows
+if(WIN32)
+  enable_language(RC)
+endif()
+
 # ---------------------------------------------------------------------------
 # Global settings
 # ---------------------------------------------------------------------------

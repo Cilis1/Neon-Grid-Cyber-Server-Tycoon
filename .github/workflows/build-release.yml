@@ -64,7 +64,7 @@ jobs:
     name: Package & publish release (tags only)
     if: startsWith(github.ref, 'refs/tags/v')
     needs: build-and-test
-    runs-on: windows-latest
+    runs-on: windows-2022
     steps:
       - name: Checkout
         uses: actions/checkout@v4
