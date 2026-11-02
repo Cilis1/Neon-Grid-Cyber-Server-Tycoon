@@ -1,0 +1,6 @@
+{
+  "version": "1.0.0",
+  "game_zip_url": "https://github.com/Cilis1/Neon-Grid-Cyber-Server-Tycoon/releases/latest/download/game.zip",
+  "sha256": "REPLACE_WITH_SHA256_OF_game.zip",
+  "changelog": "Initial release of Neon Grid: Cyber Server Tycoon."
+}

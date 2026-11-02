@@ -1,0 +1,1228 @@
+{
+  "nodes": [
+    {
+      "id": "hw1",
+      "name": "Basic Tooling",
+      "description": "Learn to mount and wire basic racks.",
+      "branch": "Hardware",
+      "tier": 1,
+      "cost_credits": 500,
+      "cost_rp": 5,
+      "prereqs": [],
+      "effects": [
+        {
+          "type": "unlock_hardware",
+          "id": "hw_rack_t2"
+        },
+        {
+          "type": "stat_multiplier",
+          "stat": "cpu_speed",
+          "value": 1.05
+        }
+      ],
+      "x": 0,
+      "y": 160
+    },
+    {
+      "id": "hw2",
+      "name": "Rack Expansion",
+      "description": "Bigger racks, bigger dreams.",
+      "branch": "Hardware",
+      "tier": 2,
+      "cost_credits": 2000,
+      "cost_rp": 10,
+      "prereqs": [
+        "hw1"
+      ],
+      "effects": [
+        {
+          "type": "unlock_hardware",
+          "id": "hw_rack_t3"
+        },
+        {
+          "type": "stat_multiplier",
+          "stat": "storage",
+          "value": 1.2
+        }
+      ],
+      "x": 0,
+      "y": 320
+    },
+    {
+      "id": "hw3",
+      "name": "Enterprise Racks",
+      "description": "Datacenter cabinets.",
+      "branch": "Hardware",
+      "tier": 3,
+      "cost_credits": 8000,
+      "cost_rp": 20,
+      "prereqs": [
+        "hw2"
+      ],
+      "effects": [
+        {
+          "type": "unlock_hardware",
+          "id": "hw_rack_t4"
+        }
+      ],
+      "x": 0,
+      "y": 480
+    },
+    {
+      "id": "hw4",
+      "name": "Military Chassis",
+      "description": "EMP-hardened frames.",
+      "branch": "Hardware",
+      "tier": 4,
+      "cost_credits": 30000,
+      "cost_rp": 40,
+      "prereqs": [
+        "hw3"
+      ],
+      "effects": [
+        {
+          "type": "unlock_hardware",
+          "id": "hw_rack_t5"
+        },
+        {
+          "type": "stat_multiplier",
+          "stat": "durability",
+          "value": 1.25
+        }
+      ],
+      "x": 0,
+      "y": 640
+    },
+    {
+      "id": "hw5",
+      "name": "Liquid Cooling Loop",
+      "description": "Serious cooling for serious rigs.",
+      "branch": "Hardware",
+      "tier": 2,
+      "cost_credits": 3000,
+      "cost_rp": 12,
+      "prereqs": [
+        "hw1"
+      ],
+      "effects": [
+        {
+          "type": "cooling_efficiency",
+          "value": 0.25
+        },
+        {
+          "type": "unlock_hardware",
+          "id": "hw_cooler_t3"
+        }
+      ],
+      "x": 0,
+      "y": 320
+    },
+    {
+      "id": "hw6",
+      "name": "Industrial HVAC",
+      "description": "Whole-room climate control.",
+      "branch": "Hardware",
+      "tier": 3,
+      "cost_credits": 12000,
+      "cost_rp": 25,
+      "prereqs": [
+        "hw5"
+      ],
+      "effects": [
+        {
+          "type": "cooling_efficiency",
+          "value": 0.25
+        },
+        {
+          "type": "unlock_hardware",
+          "id": "hw_cooler_t4"
+        }
+      ],
+      "x": 0,
+      "y": 480
+    },
+    {
+      "id": "hw7",
+      "name": "UPS Systems",
+      "description": "Ride through blackouts.",
+      "branch": "Hardware",
+      "tier": 2,
+      "cost_credits": 2500,
+      "cost_rp": 10,
+      "prereqs": [
+        "hw1"
+      ],
+      "effects": [
+        {
+          "type": "unlock_hardware",
+          "id": "hw_ups_t2"
+        }
+      ],
+      "x": 0,
+      "y": 320
+    },
+    {
+      "id": "hw8",
+      "name": "Backup Generators",
+      "description": "Never go dark.",
+      "branch": "Hardware",
+      "tier": 4,
+      "cost_credits": 15000,
+      "cost_rp": 35,
+      "prereqs": [
+        "hw7"
+      ],
+      "effects": [
+        {
+          "type": "unlock_hardware",
+          "id": "hw_ups_t3"
+        },
+        {
+          "type": "power_efficiency",
+          "value": 0.2
+        }
+      ],
+      "x": 0,
+      "y": 640
+    },
+    {
+      "id": "hw9",
+      "name": "High-Wattage PDUs",
+      "description": "Feed the power hunger.",
+      "branch": "Hardware",
+      "tier": 3,
+      "cost_credits": 6000,
+      "cost_rp": 22,
+      "prereqs": [
+        "hw7"
+      ],
+      "effects": [
+        {
+          "type": "unlock_hardware",
+          "id": "hw_pdu_t3"
+        },
+        {
+          "type": "unlock_hardware",
+          "id": "hw_pdu_t4"
+        }
+      ],
+      "x": 0,
+      "y": 480
+    },
+    {
+      "id": "hw10",
+      "name": "Overclocked CPUs",
+      "description": "Push silicon to the edge.",
+      "branch": "Hardware",
+      "tier": 3,
+      "cost_credits": 10000,
+      "cost_rp": 25,
+      "prereqs": [
+        "hw2"
+      ],
+      "effects": [
+        {
+          "type": "stat_multiplier",
+          "stat": "cpu_speed",
+          "value": 1.25
+        },
+        {
+          "type": "heat_reduction",
+          "value": 0.1
+        }
+      ],
+      "x": 0,
+      "y": 480
+    },
+    {
+      "id": "sw1",
+      "name": "Server OS v1",
+      "description": "A working operating system for your servers.",
+      "branch": "Software",
+      "tier": 1,
+      "cost_credits": 300,
+      "cost_rp": 5,
+      "prereqs": [],
+      "effects": [
+        {
+          "type": "unlock_contract_type",
+          "id": "mining"
+        },
+        {
+          "type": "passive_income",
+          "value": 50
+        }
+      ],
+      "x": 320,
+      "y": 160
+    },
+    {
+      "id": "sw2",
+      "name": "Automation Scripts",
+      "description": "Hire fewer humans.",
+      "branch": "Software",
+      "tier": 2,
+      "cost_credits": 1500,
+      "cost_rp": 8,
+      "prereqs": [
+        "sw1"
+      ],
+      "effects": [
+        {
+          "type": "employee_slots",
+          "value": 1
+        }
+      ],
+      "x": 320,
+      "y": 320
+    },
+    {
+      "id": "sw3",
+      "name": "Load Balancer",
+      "description": "Spread the load.",
+      "branch": "Software",
+      "tier": 2,
+      "cost_credits": 2500,
+      "cost_rp": 10,
+      "prereqs": [
+        "sw1"
+      ],
+      "effects": [
+        {
+          "type": "bandwidth_bonus",
+          "value": 100
+        }
+      ],
+      "x": 320,
+      "y": 320
+    },
+    {
+      "id": "sw4",
+      "name": "Database Engine",
+      "description": "Store everything.",
+      "branch": "Software",
+      "tier": 3,
+      "cost_credits": 5000,
+      "cost_rp": 18,
+      "prereqs": [
+        "sw3"
+      ],
+      "effects": [
+        {
+          "type": "storage_bonus",
+          "value": 5
+        }
+      ],
+      "x": 320,
+      "y": 480
+    },
+    {
+      "id": "sw5",
+      "name": "AI Orchestrator",
+      "description": "Let the machines run the company.",
+      "branch": "Software",
+      "tier": 4,
+      "cost_credits": 20000,
+      "cost_rp": 45,
+      "prereqs": [
+        "sw2",
+        "sw4"
+      ],
+      "effects": [
+        {
+          "type": "employee_slots",
+          "value": 2
+        },
+        {
+          "type": "passive_income",
+          "value": 200
+        }
+      ],
+      "x": 320,
+      "y": 640
+    },
+    {
+      "id": "sw6",
+      "name": "Intrusion Detection",
+      "description": "Know when someone is inside.",
+      "branch": "Software",
+      "tier": 3,
+      "cost_credits": 4000,
+      "cost_rp": 15,
+      "prereqs": [
+        "sw1"
+      ],
+      "effects": [
+        {
+          "type": "unlock_program",
+          "id": "prog_shield_boost"
+        },
+        {
+          "type": "heat_reduction",
+          "value": 0.2
+        }
+      ],
+      "x": 320,
+      "y": 480
+    },
+    {
+      "id": "sw7",
+      "name": "Defensive ICE",
+      "description": "Fight fire with ICE.",
+      "branch": "Software",
+      "tier": 4,
+      "cost_credits": 15000,
+      "cost_rp": 35,
+      "prereqs": [
+        "sw6"
+      ],
+      "effects": [
+        {
+          "type": "security_rating",
+          "value": 30
+        }
+      ],
+      "x": 320,
+      "y": 640
+    },
+    {
+      "id": "sw8",
+      "name": "Market Analytics",
+      "description": "Buy low, sell high, always.",
+      "branch": "Software",
+      "tier": 2,
+      "cost_credits": 1200,
+      "cost_rp": 8,
+      "prereqs": [
+        "sw1"
+      ],
+      "effects": [
+        {
+          "type": "income_bonus",
+          "value": 10
+        }
+      ],
+      "x": 320,
+      "y": 320
+    },
+    {
+      "id": "sw9",
+      "name": "Quantum Encryption",
+      "description": "Unbreakable links.",
+      "branch": "Software",
+      "tier": 5,
+      "cost_credits": 50000,
+      "cost_rp": 80,
+      "prereqs": [
+        "sw7"
+      ],
+      "effects": [
+        {
+          "type": "unlock_hardware",
+          "id": "hw_cyberdeck_t3"
+        },
+        {
+          "type": "trace_reduction",
+          "value": 1.0
+        }
+      ],
+      "x": 320,
+      "y": 800
+    },
+    {
+      "id": "nr1",
+      "name": "Basic Deck Firmware",
+      "description": "A deck that boots.",
+      "branch": "Netrunning",
+      "tier": 1,
+      "cost_credits": 400,
+      "cost_rp": 5,
+      "prereqs": [],
+      "effects": [
+        {
+          "type": "max_ram_bonus",
+          "value": 2
+        },
+        {
+          "type": "unlock_program",
+          "id": "prog_cloak"
+        }
+      ],
+      "x": 640,
+      "y": 160
+    },
+    {
+      "id": "nr2",
+      "name": "Cloak Suite",
+      "description": "Stay invisible.",
+      "branch": "Netrunning",
+      "tier": 2,
+      "cost_credits": 1800,
+      "cost_rp": 10,
+      "prereqs": [
+        "nr1"
+      ],
+      "effects": [
+        {
+          "type": "detection_reduction",
+          "value": 10
+        },
+        {
+          "type": "unlock_program",
+          "id": "prog_trace_scrub"
+        }
+      ],
+      "x": 640,
+      "y": 320
+    },
+    {
+      "id": "nr3",
+      "name": "ICE Breaker Alpha",
+      "description": "Crack ICE like eggs.",
+      "branch": "Netrunning",
+      "tier": 2,
+      "cost_credits": 2000,
+      "cost_rp": 10,
+      "prereqs": [
+        "nr1"
+      ],
+      "effects": [
+        {
+          "type": "ice_damage_bonus",
+          "value": 5
+        }
+      ],
+      "x": 640,
+      "y": 320
+    },
+    {
+      "id": "nr4",
+      "name": "Ghost Protocol",
+      "description": "Leave no trace.",
+      "branch": "Netrunning",
+      "tier": 3,
+      "cost_credits": 8000,
+      "cost_rp": 25,
+      "prereqs": [
+        "nr2",
+        "nr3"
+      ],
+      "effects": [
+        {
+          "type": "trace_reduction",
+          "value": 1.5
+        },
+        {
+          "type": "unlock_cyberware",
+          "id": "ghost_protocol"
+        }
+      ],
+      "x": 640,
+      "y": 480
+    },
+    {
+      "id": "nr5",
+      "name": "Neural Interface",
+      "description": "Plug the deck straight into your brain.",
+      "branch": "Netrunning",
+      "tier": 3,
+      "cost_credits": 9000,
+      "cost_rp": 28,
+      "prereqs": [
+        "nr1"
+      ],
+      "effects": [
+        {
+          "type": "unlock_cyberware",
+          "id": "neural_link"
+        },
+        {
+          "type": "max_ram_bonus",
+          "value": 4
+        }
+      ],
+      "x": 640,
+      "y": 480
+    },
+    {
+      "id": "nr6",
+      "name": "Reflex Booster",
+      "description": "Think faster than the ICE.",
+      "branch": "Netrunning",
+      "tier": 4,
+      "cost_credits": 25000,
+      "cost_rp": 50,
+      "prereqs": [
+        "nr5"
+      ],
+      "effects": [
+        {
+          "type": "unlock_cyberware",
+          "id": "reflex_tuner"
+        },
+        {
+          "type": "action_points",
+          "value": 1
+        }
+      ],
+      "x": 640,
+      "y": 640
+    },
+    {
+      "id": "nr7",
+      "name": "Data Siphon",
+      "description": "Vacuum up every shard.",
+      "branch": "Netrunning",
+      "tier": 3,
+      "cost_credits": 6000,
+      "cost_rp": 22,
+      "prereqs": [
+        "nr3"
+      ],
+      "effects": [
+        {
+          "type": "unlock_program",
+          "id": "prog_data_spike"
+        }
+      ],
+      "x": 640,
+      "y": 480
+    },
+    {
+      "id": "nr8",
+      "name": "Backdoor Mastery",
+      "description": "Install permanent access.",
+      "branch": "Netrunning",
+      "tier": 4,
+      "cost_credits": 18000,
+      "cost_rp": 40,
+      "prereqs": [
+        "nr7"
+      ],
+      "effects": [
+        {
+          "type": "unlock_program",
+          "id": "prog_backdoor"
+        },
+        {
+          "type": "passive_income",
+          "value": 100
+        }
+      ],
+      "x": 640,
+      "y": 640
+    },
+    {
+      "id": "nr9",
+      "name": "Deck Overlord",
+      "description": "The ultimate netrunning deck.",
+      "branch": "Netrunning",
+      "tier": 5,
+      "cost_credits": 70000,
+      "cost_rp": 90,
+      "prereqs": [
+        "nr4",
+        "nr6"
+      ],
+      "effects": [
+        {
+          "type": "max_ram_bonus",
+          "value": 8
+        },
+        {
+          "type": "shield_bonus",
+          "value": 50
+        },
+        {
+          "type": "unlock_hardware",
+          "id": "hw_cyberdeck_t4"
+        }
+      ],
+      "x": 640,
+      "y": 800
+    },
+    {
+      "id": "ec1",
+      "name": "Black Market Contacts",
+      "description": "Everyone knows someone.",
+      "branch": "Economy",
+      "tier": 1,
+      "cost_credits": 600,
+      "cost_rp": 5,
+      "prereqs": [],
+      "effects": [
+        {
+          "type": "unlock_contract_type",
+          "id": "data_broker"
+        },
+        {
+          "type": "passive_income",
+          "value": 100
+        }
+      ],
+      "x": 960,
+      "y": 160
+    },
+    {
+      "id": "ec2",
+      "name": "Botnet Infrastructure",
+      "description": "Rent out your zombie army.",
+      "branch": "Economy",
+      "tier": 3,
+      "cost_credits": 10000,
+      "cost_rp": 30,
+      "prereqs": [
+        "ec1"
+      ],
+      "effects": [
+        {
+          "type": "unlock_contract_type",
+          "id": "botnet"
+        },
+        {
+          "type": "passive_income",
+          "value": 300
+        }
+      ],
+      "x": 960,
+      "y": 480
+    },
+    {
+      "id": "ec3",
+      "name": "Crypto Farm",
+      "description": "GPUs go brrr.",
+      "branch": "Economy",
+      "tier": 2,
+      "cost_credits": 3000,
+      "cost_rp": 12,
+      "prereqs": [
+        "ec1"
+      ],
+      "effects": [
+        {
+          "type": "mining_bonus",
+          "value": 0.5
+        },
+        {
+          "type": "unlock_hardware",
+          "id": "hw_gpu_t3"
+        }
+      ],
+      "x": 960,
+      "y": 320
+    },
+    {
+      "id": "ec4",
+      "name": "Insider Trading",
+      "description": "Information is money.",
+      "branch": "Economy",
+      "tier": 4,
+      "cost_credits": 22000,
+      "cost_rp": 45,
+      "prereqs": [
+        "ec3"
+      ],
+      "effects": [
+        {
+          "type": "income_bonus",
+          "value": 25
+        }
+      ],
+      "x": 960,
+      "y": 640
+    },
+    {
+      "id": "ec5",
+      "name": "Corporate Lobbying",
+      "description": "Friends in high places.",
+      "branch": "Economy",
+      "tier": 3,
+      "cost_credits": 9000,
+      "cost_rp": 25,
+      "prereqs": [
+        "ec1"
+      ],
+      "effects": [
+        {
+          "type": "contract_slots",
+          "value": 2
+        },
+        {
+          "type": "unlock_hardware",
+          "id": "hw_server_t3"
+        }
+      ],
+      "x": 960,
+      "y": 480
+    },
+    {
+      "id": "ec6",
+      "name": "Data Brokerage",
+      "description": "Sell what you stole.",
+      "branch": "Economy",
+      "tier": 2,
+      "cost_credits": 2000,
+      "cost_rp": 10,
+      "prereqs": [
+        "ec1"
+      ],
+      "effects": [
+        {
+          "type": "income_bonus",
+          "value": 15
+        }
+      ],
+      "x": 960,
+      "y": 320
+    },
+    {
+      "id": "ec7",
+      "name": "Rival Sabotage",
+      "description": "Cover your tracks professionally.",
+      "branch": "Economy",
+      "tier": 4,
+      "cost_credits": 16000,
+      "cost_rp": 38,
+      "prereqs": [
+        "ec2"
+      ],
+      "effects": [
+        {
+          "type": "heat_reduction",
+          "value": 0.3
+        },
+        {
+          "type": "passive_income",
+          "value": 150
+        }
+      ],
+      "x": 960,
+      "y": 640
+    },
+    {
+      "id": "ec8",
+      "name": "Megacorp Shell Company",
+      "description": "A legitimate business. Allegedly.",
+      "branch": "Economy",
+      "tier": 5,
+      "cost_credits": 60000,
+      "cost_rp": 85,
+      "prereqs": [
+        "ec4",
+        "ec5"
+      ],
+      "effects": [
+        {
+          "type": "passive_income",
+          "value": 1000
+        },
+        {
+          "type": "unlock_hardware",
+          "id": "hw_server_t5"
+        }
+      ],
+      "x": 960,
+      "y": 800
+    },
+    {
+      "id": "ec9",
+      "name": "Offshore Accounts",
+      "description": "Credits no one can trace.",
+      "branch": "Economy",
+      "tier": 3,
+      "cost_credits": 7000,
+      "cost_rp": 20,
+      "prereqs": [
+        "ec6"
+      ],
+      "effects": [
+        {
+          "type": "passive_income",
+          "value": 250
+        }
+      ],
+      "x": 960,
+      "y": 480
+    },
+    {
+      "id": "st1",
+      "name": "Proxy Chains",
+      "description": "Route your traffic through strangers' servers.",
+      "branch": "Stealth",
+      "tier": 1,
+      "cost_credits": 500,
+      "cost_rp": 5,
+      "prereqs": [],
+      "effects": [
+        {
+          "type": "trace_time_bonus",
+          "value": 20
+        }
+      ],
+      "x": 1280,
+      "y": 160
+    },
+    {
+      "id": "st2",
+      "name": "Bulletproof Hosting",
+      "description": "Hosting that ignores takedown requests.",
+      "branch": "Stealth",
+      "tier": 2,
+      "cost_credits": 2500,
+      "cost_rp": 12,
+      "prereqs": [
+        "st1"
+      ],
+      "effects": [
+        {
+          "type": "trace_reduction",
+          "value": 0.5
+        },
+        {
+          "type": "unlock_hardware",
+          "id": "hw_switch_t3"
+        }
+      ],
+      "x": 1280,
+      "y": 320
+    },
+    {
+      "id": "st3",
+      "name": "Dead Drops",
+      "description": "Pass data without meeting.",
+      "branch": "Stealth",
+      "tier": 2,
+      "cost_credits": 1800,
+      "cost_rp": 10,
+      "prereqs": [
+        "st1"
+      ],
+      "effects": [
+        {
+          "type": "detection_reduction",
+          "value": 15
+        }
+      ],
+      "x": 1280,
+      "y": 320
+    },
+    {
+      "id": "st4",
+      "name": "Ghost Servers",
+      "description": "Servers that officially do not exist.",
+      "branch": "Stealth",
+      "tier": 3,
+      "cost_credits": 8000,
+      "cost_rp": 25,
+      "prereqs": [
+        "st2",
+        "st3"
+      ],
+      "effects": [
+        {
+          "type": "trace_time_bonus",
+          "value": 30
+        },
+        {
+          "type": "heat_reduction",
+          "value": 0.2
+        }
+      ],
+      "x": 1280,
+      "y": 480
+    },
+    {
+      "id": "st5",
+      "name": "Identity Forgery",
+      "description": "Be someone else.",
+      "branch": "Stealth",
+      "tier": 3,
+      "cost_credits": 6000,
+      "cost_rp": 22,
+      "prereqs": [
+        "st2"
+      ],
+      "effects": [
+        {
+          "type": "passive_income",
+          "value": 150
+        }
+      ],
+      "x": 1280,
+      "y": 480
+    },
+    {
+      "id": "st6",
+      "name": "Corporate Espionage",
+      "description": "Steal from the giants.",
+      "branch": "Stealth",
+      "tier": 4,
+      "cost_credits": 20000,
+      "cost_rp": 42,
+      "prereqs": [
+        "st4",
+        "st5"
+      ],
+      "effects": [
+        {
+          "type": "unlock_contract_type",
+          "id": "data_broker"
+        },
+        {
+          "type": "income_bonus",
+          "value": 20
+        }
+      ],
+      "x": 1280,
+      "y": 640
+    },
+    {
+      "id": "st7",
+      "name": "Perfect Cover",
+      "description": "No one can find you.",
+      "branch": "Stealth",
+      "tier": 5,
+      "cost_credits": 55000,
+      "cost_rp": 85,
+      "prereqs": [
+        "st6"
+      ],
+      "effects": [
+        {
+          "type": "trace_reduction",
+          "value": 2.0
+        },
+        {
+          "type": "heat_reduction",
+          "value": 0.5
+        }
+      ],
+      "x": 1280,
+      "y": 800
+    },
+    {
+      "id": "st8",
+      "name": "Smoke and Mirrors",
+      "description": "Confuse every scanner.",
+      "branch": "Stealth",
+      "tier": 4,
+      "cost_credits": 15000,
+      "cost_rp": 35,
+      "prereqs": [
+        "st4"
+      ],
+      "effects": [
+        {
+          "type": "detection_reduction",
+          "value": 20
+        }
+      ],
+      "x": 1280,
+      "y": 640
+    },
+    {
+      "id": "inf1",
+      "name": "Fiber Uplink",
+      "description": "Serious bandwidth.",
+      "branch": "Infrastructure",
+      "tier": 1,
+      "cost_credits": 700,
+      "cost_rp": 5,
+      "prereqs": [],
+      "effects": [
+        {
+          "type": "bandwidth_bonus",
+          "value": 200
+        },
+        {
+          "type": "unlock_hardware",
+          "id": "hw_switch_t2"
+        }
+      ],
+      "x": 1600,
+      "y": 160
+    },
+    {
+      "id": "inf2",
+      "name": "Redundant Power",
+      "description": "Two feeds, zero downtime.",
+      "branch": "Infrastructure",
+      "tier": 2,
+      "cost_credits": 4000,
+      "cost_rp": 15,
+      "prereqs": [
+        "inf1"
+      ],
+      "effects": [
+        {
+          "type": "power_efficiency",
+          "value": 0.15
+        },
+        {
+          "type": "unlock_hardware",
+          "id": "hw_pdu_t2"
+        }
+      ],
+      "x": 1600,
+      "y": 320
+    },
+    {
+      "id": "inf3",
+      "name": "Server Room Expansion",
+      "description": "Buy the room next door.",
+      "branch": "Infrastructure",
+      "tier": 2,
+      "cost_credits": 5000,
+      "cost_rp": 15,
+      "prereqs": [
+        "inf1"
+      ],
+      "effects": [
+        {
+          "type": "passive_income",
+          "value": 75
+        }
+      ],
+      "x": 1600,
+      "y": 320
+    },
+    {
+      "id": "inf4",
+      "name": "Research Lab",
+      "description": "Turn credits into knowledge.",
+      "branch": "Infrastructure",
+      "tier": 3,
+      "cost_credits": 9000,
+      "cost_rp": 30,
+      "prereqs": [
+        "inf3"
+      ],
+      "effects": [
+        {
+          "type": "rp_per_day",
+          "value": 5
+        }
+      ],
+      "x": 1600,
+      "y": 480
+    },
+    {
+      "id": "inf5",
+      "name": "Automated Maintenance",
+      "description": "Robots clean the dust.",
+      "branch": "Infrastructure",
+      "tier": 3,
+      "cost_credits": 7000,
+      "cost_rp": 25,
+      "prereqs": [
+        "inf3"
+      ],
+      "effects": [
+        {
+          "type": "cooling_efficiency",
+          "value": 0.1
+        },
+        {
+          "type": "employee_slots",
+          "value": 1
+        }
+      ],
+      "x": 1600,
+      "y": 480
+    },
+    {
+      "id": "inf6",
+      "name": "Second Location",
+      "description": "Expand across the city.",
+      "branch": "Infrastructure",
+      "tier": 4,
+      "cost_credits": 25000,
+      "cost_rp": 50,
+      "prereqs": [
+        "inf3"
+      ],
+      "effects": [
+        {
+          "type": "passive_income",
+          "value": 200
+        }
+      ],
+      "x": 1600,
+      "y": 640
+    },
+    {
+      "id": "inf7",
+      "name": "City Grid Tap",
+      "description": "Tap the city's power backbone.",
+      "branch": "Infrastructure",
+      "tier": 4,
+      "cost_credits": 30000,
+      "cost_rp": 55,
+      "prereqs": [
+        "inf2",
+        "inf6"
+      ],
+      "effects": [
+        {
+          "type": "power_efficiency",
+          "value": 0.25
+        },
+        {
+          "type": "bandwidth_bonus",
+          "value": 500
+        }
+      ],
+      "x": 1600,
+      "y": 640
+    },
+    {
+      "id": "inf8",
+      "name": "Datacenter Campus",
+      "description": "Your own datacenter.",
+      "branch": "Infrastructure",
+      "tier": 5,
+      "cost_credits": 80000,
+      "cost_rp": 95,
+      "prereqs": [
+        "inf6",
+        "inf7"
+      ],
+      "effects": [
+        {
+          "type": "passive_income",
+          "value": 800
+        },
+        {
+          "type": "employee_slots",
+          "value": 3
+        }
+      ],
+      "x": 1600,
+      "y": 800
+    },
+    {
+      "id": "inf9",
+      "name": "Megacorp Backbone",
+      "description": "Lease the backbone itself.",
+      "branch": "Infrastructure",
+      "tier": 5,
+      "cost_credits": 150000,
+      "cost_rp": 120,
+      "prereqs": [
+        "inf8"
+      ],
+      "effects": [
+        {
+          "type": "unlock_hardware",
+          "id": "hw_pdu_t5"
+        },
+        {
+          "type": "passive_income",
+          "value": 2000
+        }
+      ],
+      "x": 1600,
+      "y": 800
+    }
+  ]
+}

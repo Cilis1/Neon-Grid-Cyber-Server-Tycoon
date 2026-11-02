@@ -1,0 +1,201 @@
+{
+  "templates": [
+    {
+      "id": "ct_courier_1",
+      "type": "courier",
+      "title": "Courier: Neon district packet",
+      "description": "Move a data packet across the neon district. Fast hands pay well.",
+      "client_faction": "independent",
+      "reward_min": 300,
+      "reward_max": 600,
+      "duration_hours": 6,
+      "requirements": {},
+      "risk": 0.0,
+      "rep_effects": {
+        "independent": 2
+      },
+      "difficulty": 1
+    },
+    {
+      "id": "ct_courier_2",
+      "type": "courier",
+      "title": "Courier: Arasaka downtown run",
+      "description": "Deliver an encrypted drive to the Arasaka tower lobby.",
+      "client_faction": "arasaka",
+      "reward_min": 800,
+      "reward_max": 1500,
+      "duration_hours": 8,
+      "requirements": {},
+      "risk": 0.05,
+      "rep_effects": {
+        "arasaka": 4
+      },
+      "difficulty": 2
+    },
+    {
+      "id": "ct_courier_3",
+      "type": "courier",
+      "title": "Courier: Serpents territory",
+      "description": "Run a package through Neon Serpents turf. They watch the streets.",
+      "client_faction": "neon_serpents",
+      "reward_min": 600,
+      "reward_max": 1200,
+      "duration_hours": 10,
+      "requirements": {},
+      "risk": 0.15,
+      "rep_effects": {
+        "neon_serpents": 5,
+        "citynet": -2
+      },
+      "difficulty": 2
+    },
+    {
+      "id": "ct_courier_4",
+      "type": "courier",
+      "title": "Courier: CityNet escorted lane",
+      "description": "CityNet-secured convoy lane. Safe but boring.",
+      "client_faction": "citynet",
+      "reward_min": 400,
+      "reward_max": 700,
+      "duration_hours": 5,
+      "requirements": {},
+      "risk": 0.0,
+      "rep_effects": {
+        "citynet": 4
+      },
+      "difficulty": 1
+    },
+    {
+      "id": "ct_storage_1",
+      "type": "storage",
+      "title": "Storage rental: 10TB cold storage",
+      "description": "Client needs 10TB of storage for 3 days at 99% uptime.",
+      "client_faction": "independent",
+      "reward_min": 400,
+      "reward_max": 800,
+      "duration_hours": 72,
+      "requirements": {
+        "storage_tb": 10,
+        "uptime_pct": 99
+      },
+      "risk": 0.0,
+      "rep_effects": {
+        "independent": 3
+      },
+      "difficulty": 1
+    },
+    {
+      "id": "ct_storage_2",
+      "type": "storage",
+      "title": "Storage rental: corp archive",
+      "description": "Arasoft archive colocation. 50TB, 7 days, 99.5% uptime.",
+      "client_faction": "arasaka",
+      "reward_min": 2500,
+      "reward_max": 4500,
+      "duration_hours": 168,
+      "requirements": {
+        "storage_tb": 50,
+        "uptime_pct": 99.5
+      },
+      "risk": 0.02,
+      "rep_effects": {
+        "arasaka": 8
+      },
+      "difficulty": 3
+    },
+    {
+      "id": "ct_hosting_1",
+      "type": "hosting",
+      "title": "Hosting: small web app",
+      "description": "Host a small web app: needs 100 Mbps and 2 compute.",
+      "client_faction": "independent",
+      "reward_min": 600,
+      "reward_max": 1000,
+      "duration_hours": 48,
+      "requirements": {
+        "bandwidth_mbps": 100,
+        "compute": 2,
+        "uptime_pct": 99
+      },
+      "risk": 0.0,
+      "rep_effects": {
+        "independent": 3
+      },
+      "difficulty": 1
+    },
+    {
+      "id": "ct_hosting_2",
+      "type": "hosting",
+      "title": "Hosting: game server cluster",
+      "description": "Host a game server cluster for a week. 1Gbps, 8 compute.",
+      "client_faction": "glitch_collective",
+      "reward_min": 3000,
+      "reward_max": 5000,
+      "duration_hours": 168,
+      "requirements": {
+        "bandwidth_mbps": 1000,
+        "compute": 8,
+        "uptime_pct": 99
+      },
+      "risk": 0.05,
+      "rep_effects": {
+        "glitch_collective": 8
+      },
+      "difficulty": 3
+    },
+    {
+      "id": "ct_mining_1",
+      "type": "mining",
+      "title": "Mining rig rental",
+      "description": "Rent your hash power to a pool for 2 days.",
+      "client_faction": "independent",
+      "reward_min": 500,
+      "reward_max": 900,
+      "duration_hours": 48,
+      "requirements": {
+        "hash_mh": 50
+      },
+      "risk": 0.0,
+      "rep_effects": {
+        "independent": 2
+      },
+      "difficulty": 1
+    },
+    {
+      "id": "ct_broker_1",
+      "type": "data_broker",
+      "title": "Data brokerage: hot shards",
+      "description": "Sell 5 data shards on the black market within 2 days.",
+      "client_faction": "glitch_collective",
+      "reward_min": 1200,
+      "reward_max": 2200,
+      "duration_hours": 48,
+      "requirements": {
+        "data_shards": 5
+      },
+      "risk": 0.2,
+      "rep_effects": {
+        "glitch_collective": 6,
+        "citynet": -3
+      },
+      "difficulty": 2
+    },
+    {
+      "id": "ct_botnet_1",
+      "type": "botnet",
+      "title": "Botnet rental (DDoS-for-hire)",
+      "description": "Rent out your claimed servers for a coordinated flood. Very illegal.",
+      "client_faction": "neon_serpents",
+      "reward_min": 4000,
+      "reward_max": 8000,
+      "duration_hours": 24,
+      "requirements": {},
+      "risk": 0.5,
+      "rep_effects": {
+        "neon_serpents": 10,
+        "citynet": -10
+      },
+      "difficulty": 4
+    }
+  ]
+}

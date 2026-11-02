@@ -1,0 +1,264 @@
+{
+  "items": [
+    {
+      "id": "ev_power_surge",
+      "name": "Power Surge",
+      "description": "A surge hits the grid. A component takes damage unless protected.",
+      "weight": 3,
+      "conditions": {},
+      "effects": [
+        {
+          "type": "damage_hardware",
+          "value": 25
+        }
+      ],
+      "lua_script": "power_surge.lua"
+    },
+    {
+      "id": "ev_fan_failure",
+      "name": "Fan Failure",
+      "description": "A cooling fan dies somewhere in your room.",
+      "weight": 3,
+      "conditions": {
+        "min_rooms": 1
+      },
+      "effects": [
+        {
+          "type": "damage_hardware",
+          "value": 15
+        }
+      ],
+      "lua_script": ""
+    },
+    {
+      "id": "ev_corporate_offer",
+      "name": "Corporate Offer",
+      "description": "Arasoft offers you a lucrative contract out of nowhere.",
+      "weight": 2,
+      "conditions": {},
+      "effects": [
+        {
+          "type": "credits",
+          "value": 800
+        },
+        {
+          "type": "heat",
+          "value": 5
+        }
+      ],
+      "lua_script": ""
+    },
+    {
+      "id": "ev_black_market_sale",
+      "name": "Black Market Sale",
+      "description": "A rare item is available cheap. Buy it? (+heat)",
+      "weight": 2,
+      "conditions": {
+        "time_of_day": "night"
+      },
+      "effects": [
+        {
+          "type": "credits",
+          "value": -400
+        },
+        {
+          "type": "data_shards",
+          "value": 5
+        },
+        {
+          "type": "heat",
+          "value": 8
+        }
+      ],
+      "lua_script": "black_market.lua"
+    },
+    {
+      "id": "ev_rival_ddos",
+      "name": "Competitor DDoS",
+      "description": "A rival floods your servers. Uptime suffers for an hour.",
+      "weight": 2,
+      "conditions": {},
+      "effects": [
+        {
+          "type": "reputation",
+          "value": -2
+        },
+        {
+          "type": "heat",
+          "value": 0
+        }
+      ],
+      "lua_script": "ddos.lua"
+    },
+    {
+      "id": "ev_city_blackout",
+      "name": "City Blackout",
+      "description": "The city grid fails. UPS units matter now.",
+      "weight": 1,
+      "conditions": {},
+      "effects": [
+        {
+          "type": "power_outage",
+          "value": 1
+        }
+      ],
+      "lua_script": "blackout.lua"
+    },
+    {
+      "id": "ev_netrunner_attack",
+      "name": "Netrunner Attack",
+      "description": "Someone tries to hack YOUR server.",
+      "weight": 2,
+      "conditions": {},
+      "effects": [
+        {
+          "type": "heat",
+          "value": 3
+        },
+        {
+          "type": "credits",
+          "value": -200
+        }
+      ],
+      "lua_script": ""
+    },
+    {
+      "id": "ev_found_cache",
+      "name": "Found Cache",
+      "description": "You find a forgotten cache of credits in an old drive.",
+      "weight": 3,
+      "conditions": {},
+      "effects": [
+        {
+          "type": "credits",
+          "value": 350
+        }
+      ],
+      "lua_script": ""
+    },
+    {
+      "id": "ev_market_rally",
+      "name": "Market Rally",
+      "description": "NEON coin rallies. Your crypto holdings gain value.",
+      "weight": 2,
+      "conditions": {},
+      "effects": [
+        {
+          "type": "credits",
+          "value": 250
+        }
+      ],
+      "lua_script": ""
+    },
+    {
+      "id": "ev_dust_storm",
+      "name": "Dust Storm",
+      "description": "A dust storm coats your cooling units.",
+      "weight": 2,
+      "conditions": {
+        "time_of_day": "day"
+      },
+      "effects": [
+        {
+          "type": "damage_hardware",
+          "value": 5
+        }
+      ],
+      "lua_script": ""
+    },
+    {
+      "id": "ev_heat_wave",
+      "name": "Heat Wave",
+      "description": "The city bakes. Cooling is less effective today.",
+      "weight": 2,
+      "conditions": {
+        "time_of_day": "day"
+      },
+      "effects": [
+        {
+          "type": "cooling_efficiency",
+          "value": -0.1
+        }
+      ],
+      "lua_script": ""
+    },
+    {
+      "id": "ev_inspection",
+      "name": "CityNet Inspection",
+      "description": "CityNet scans the district. Heat rises.",
+      "weight": 2,
+      "conditions": {
+        "heat_min": 26
+      },
+      "effects": [
+        {
+          "type": "heat",
+          "value": 10
+        }
+      ],
+      "lua_script": ""
+    },
+    {
+      "id": "ev_generous_client",
+      "name": "Generous Client",
+      "description": "A client tips you extra for good service.",
+      "weight": 3,
+      "conditions": {},
+      "effects": [
+        {
+          "type": "credits",
+          "value": 200
+        },
+        {
+          "type": "reputation",
+          "value": 2
+        }
+      ],
+      "lua_script": ""
+    },
+    {
+      "id": "ev_data_cache",
+      "name": "Data Cache",
+      "description": "Your netrunner employee brings back shards.",
+      "weight": 2,
+      "conditions": {},
+      "effects": [
+        {
+          "type": "data_shards",
+          "value": 3
+        }
+      ],
+      "lua_script": ""
+    },
+    {
+      "id": "ev_power_discount",
+      "name": "Power Discount",
+      "description": "The utility offers a discount this week.",
+      "weight": 2,
+      "conditions": {},
+      "effects": [
+        {
+          "type": "credits",
+          "value": 300
+        }
+      ],
+      "lua_script": ""
+    },
+    {
+      "id": "ev_raid_close",
+      "name": "Close Call",
+      "description": "Sirens outside. You lay low and avoid a raid... this time.",
+      "weight": 1,
+      "conditions": {
+        "heat_min": 51
+      },
+      "effects": [
+        {
+          "type": "heat",
+          "value": -10
+        }
+      ],
+      "lua_script": ""
+    }
+  ]
+}

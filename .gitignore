@@ -1,0 +1,24 @@
+# Build outputs
+build/
+build-*/
+out/
+.vs/
+.idea/
+*.user
+*.suo
+
+# Python
+__pycache__/
+*.pyc
+
+# Downloaded runtime assets (fetched by scripts/download_fonts.py in CI/dev)
+assets/fonts/*.ttf
+assets/fonts/licenses/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Local test artifacts
+/test_http_root/
+*.zip

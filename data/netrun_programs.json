@@ -1,0 +1,114 @@
+{
+  "items": [
+    {
+      "id": "prog_decrypt",
+      "name": "Decrypt",
+      "description": "Open an adjacent data node and extract shards.",
+      "ram_cost": 2,
+      "cooldown": 0,
+      "effect_type": "decrypt",
+      "effect_value": 1,
+      "rarity": "common",
+      "lua_script": ""
+    },
+    {
+      "id": "prog_attack",
+      "name": "Attack",
+      "description": "Smash an adjacent ICE unit for damage.",
+      "ram_cost": 2,
+      "cooldown": 1,
+      "effect_type": "attack",
+      "effect_value": 12,
+      "rarity": "common",
+      "lua_script": ""
+    },
+    {
+      "id": "prog_cloak",
+      "name": "Cloak",
+      "description": "Become harder to detect (-25 detection, resets ICE alert).",
+      "ram_cost": 2,
+      "cooldown": 3,
+      "effect_type": "cloak",
+      "effect_value": 25,
+      "rarity": "uncommon",
+      "lua_script": "cloak.lua"
+    },
+    {
+      "id": "prog_heal",
+      "name": "Heal",
+      "description": "Patch your deck: +30 shield.",
+      "ram_cost": 1,
+      "cooldown": 3,
+      "effect_type": "heal",
+      "effect_value": 30,
+      "rarity": "common",
+      "lua_script": ""
+    },
+    {
+      "id": "prog_data_spike",
+      "name": "Data Spike",
+      "description": "Siphon a data node for 3x shards (+credits). At ROOT: instant win.",
+      "ram_cost": 3,
+      "cooldown": 2,
+      "effect_type": "data_spike",
+      "effect_value": 3,
+      "rarity": "rare",
+      "lua_script": ""
+    },
+    {
+      "id": "prog_backdoor",
+      "name": "Backdoor",
+      "description": "At the ROOT node: install permanent access and win.",
+      "ram_cost": 4,
+      "cooldown": 0,
+      "effect_type": "backdoor",
+      "effect_value": 1,
+      "rarity": "epic",
+      "lua_script": ""
+    },
+    {
+      "id": "prog_shield_boost",
+      "name": "Shield Boost",
+      "description": "+50 shield and -5 detection.",
+      "ram_cost": 2,
+      "cooldown": 4,
+      "effect_type": "shield_boost",
+      "effect_value": 50,
+      "rarity": "uncommon",
+      "lua_script": ""
+    },
+    {
+      "id": "prog_trace_scrub",
+      "name": "Trace Scrub",
+      "description": "Wipe 30% of the trace progress.",
+      "ram_cost": 2,
+      "cooldown": 2,
+      "effect_type": "trace_scrub",
+      "effect_value": 30,
+      "rarity": "uncommon",
+      "lua_script": ""
+    },
+    {
+      "id": "prog_worm",
+      "name": "Worm",
+      "description": "Hits ALL adjacent ICE for damage.",
+      "ram_cost": 3,
+      "cooldown": 3,
+      "effect_type": "attack",
+      "effect_value": 8,
+      "rarity": "rare",
+      "lua_script": ""
+    },
+    {
+      "id": "prog_daemon",
+      "name": "Daemon",
+      "description": "Passive: -3 detection per turn while equipped.",
+      "ram_cost": 1,
+      "cooldown": 0,
+      "effect_type": "cloak",
+      "effect_value": 3,
+      "rarity": "rare",
+      "lua_script": "daemon.lua"
+    }
+  ]
+}

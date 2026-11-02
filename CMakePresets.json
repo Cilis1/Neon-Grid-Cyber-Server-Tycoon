@@ -1,0 +1,65 @@
+{
+  "version": 3,
+  "cmakeMinimumRequired": {
+    "major": 3,
+    "minor": 24,
+    "patch": 0
+  },
+  "configurePresets": [
+    {
+      "name": "windows-msvc",
+      "displayName": "Windows MSVC (Visual Studio 2022 x64)",
+      "generator": "Visual Studio 17 2022",
+      "architecture": "x64",
+      "binaryDir": "${sourceDir}/build/windows-msvc",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Release",
+        "NEON_BUILD_GUI": "ON",
+        "NEON_BUILD_INSTALLER": "ON",
+        "NEON_BUILD_TESTS": "ON",
+        "NEON_USE_CURL": "ON",
+        "NEON_USE_LUA": "ON"
+      }
+    },
+    {
+      "name": "windows-msvc-debug",
+      "inherits": "windows-msvc",
+      "displayName": "Windows MSVC Debug",
+      "condition": { "type": "equals", "lhs": "${hostSystemName}", "rhs": "Windows" },
+      "binaryDir": "${sourceDir}/build/windows-msvc-debug",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Debug"
+      }
+    },
+    {
+      "name": "linux-dev",
+      "displayName": "Linux dev (core logic + tests only, no GUI)",
+      "generator": "Ninja",
+      "binaryDir": "${sourceDir}/build/linux-dev",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Debug",
+        "NEON_BUILD_GUI": "OFF",
+        "NEON_BUILD_INSTALLER": "ON",
+        "NEON_BUILD_TESTS": "ON",
+        "NEON_USE_CURL": "ON",
+        "NEON_USE_LUA": "ON"
+      }
+    }
+  ],
+  "buildPresets": [
+    {
+      "name": "windows-msvc-release",
+      "configurePreset": "windows-msvc",
+      "configuration": "Release"
+    },
+    {
+      "name": "windows-msvc-debug-build",
+      "configurePreset": "windows-msvc-debug",
+      "configuration": "Debug"
+    },
+    {
+      "name": "linux-dev",
+      "configurePreset": "linux-dev"
+    }
+  ]
+}

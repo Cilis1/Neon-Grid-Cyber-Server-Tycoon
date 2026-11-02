@@ -1,0 +1,120 @@
+name: Build & Release
+
+on:
+  push:
+    branches: [main]
+    tags: ['v*']
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: write  # needed to create releases on tags
+
+jobs:
+  build-and-test:
+    name: Build game + installer, run tests
+    runs-on: windows-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install Pillow (icon generation)
+        run: python -m pip install pillow
+
+      - name: Generate icon
+        run: python scripts/generate_icon.py
+
+      - name: Download fonts (best effort)
+        continue-on-error: true
+        run: python scripts/download_fonts.py
+
+      - name: Cache FetchContent deps
+        uses: actions/cache@v4
+        with:
+          path: |
+            build/windows-msvc/_deps
+          key: fetchcontent-${{ runner.os }}-${{ hashFiles('CMakeLists.txt', 'installer/CMakeLists.txt') }}
+          restore-keys: fetchcontent-${{ runner.os }}-
+
+      - name: Configure (windows-msvc preset)
+        run: cmake --preset windows-msvc
+
+      - name: Build (Release)
+        run: cmake --build --preset windows-msvc-release --parallel
+
+      - name: Run tests
+        working-directory: build/windows-msvc
+        run: ctest -C Release --output-on-failure
+
+      - name: Stage game package (cmake --install)
+        run: cmake --install build/windows-msvc --prefix build/staging --config Release
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-windows
+          path: build/staging
+
+  release:
+    name: Package & publish release (tags only)
+    if: startsWith(github.ref, 'refs/tags/v')
+    needs: build-and-test
+    runs-on: windows-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Download artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: build-windows
+          path: build/dl
+
+      - name: Package game.zip
+        shell: pwsh
+        run: |
+          python scripts/pack_assets.py build/dl/staging build/game.zip
+
+      - name: Compute SHA256 of game.zip
+        shell: pwsh
+        id: sha
+        run: |
+          $hash = (Get-FileHash -Algorithm SHA256 build/game.zip).Hash.ToLowerInvariant()
+          echo "sha256=$hash" >> $env:GITHUB_OUTPUT
+          echo "sha256: $hash"
+
+      - name: Generate version.json
+        shell: pwsh
+        env:
+          TAG: ${{ github.ref_name }}
+          SHA: ${{ steps.sha.outputs.sha256 }}
+        run: |
+          $version = $env:TAG.TrimStart('v')
+          $zipUrl = "https://github.com/${{ github.repository }}/releases/download/${{ github.ref_name }}/game.zip"
+          $manifest = [ordered]@{
+            version      = $version
+            game_zip_url = $zipUrl
+            sha256       = $env:SHA
+            changelog    = "Automated release of Neon Grid: Cyber Server Tycoon $version. See commits since previous tag."
+          }
+          $manifest | ConvertTo-Json | Set-Content -Path build/version.json -Encoding utf8
+          Get-Content build/version.json
+
+      - name: Create GitHub Release with assets
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ github.ref_name }}
+          name: Neon Grid ${{ github.ref_name }}
+          body: |
+            Automated release of **Neon Grid: Cyber Server Tycoon**.
+
+            Install with `CyberServerTycoonSetup.exe` - it downloads and verifies `game.zip` automatically.
+          files: |
+            build/dl/staging/installer/CyberServerTycoonSetup.exe
+            build/game.zip
+            build/version.json

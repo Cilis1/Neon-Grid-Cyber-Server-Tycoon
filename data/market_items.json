@@ -1,0 +1,84 @@
+{
+  "items": [
+    {
+      "id": "crypto_neon",
+      "name": "NEON coin",
+      "category": "crypto",
+      "min_price": 1.0,
+      "max_price": 8.0,
+      "volatility": 0.35,
+      "black_market": false,
+      "description": "The city's volatile cryptocurrency."
+    },
+    {
+      "id": "data_shard",
+      "name": "Data Shard",
+      "category": "data",
+      "min_price": 80.0,
+      "max_price": 400.0,
+      "volatility": 0.3,
+      "black_market": false,
+      "description": "Raw stolen data. Sell high."
+    },
+    {
+      "id": "encrypted_core",
+      "name": "Encrypted Data Core",
+      "category": "data",
+      "min_price": 500.0,
+      "max_price": 2500.0,
+      "volatility": 0.25,
+      "black_market": true,
+      "description": "Military-grade encrypted core. No questions asked."
+    },
+    {
+      "id": "black_market_deck",
+      "name": "Black Market Deck",
+      "category": "hardware",
+      "min_price": 9000.0,
+      "max_price": 20000.0,
+      "volatility": 0.15,
+      "black_market": true,
+      "description": "Untraceable cyberdeck. Slight heat on purchase."
+    },
+    {
+      "id": "canned_air",
+      "name": "Canned Air",
+      "category": "consumable",
+      "min_price": 15.0,
+      "max_price": 40.0,
+      "volatility": 0.1,
+      "black_market": false,
+      "description": "Dust removal."
+    },
+    {
+      "id": "thermal_paste",
+      "name": "Thermal Paste",
+      "category": "consumable",
+      "min_price": 40.0,
+      "max_price": 90.0,
+      "volatility": 0.1,
+      "black_market": false,
+      "description": "Reapply for a cooling boost."
+    },
+    {
+      "id": "energy_drink",
+      "name": "Neon Energy Drink",
+      "category": "consumable",
+      "min_price": 8.0,
+      "max_price": 25.0,
+      "volatility": 0.2,
+      "black_market": false,
+      "description": "Keeps a netrunner awake."
+    },
+    {
+      "id": "ice_breaker_chip",
+      "name": "ICE Breaker Chip",
+      "category": "hardware",
+      "min_price": 1500.0,
+      "max_price": 4000.0,
+      "volatility": 0.2,
+      "black_market": true,
+      "description": "One-shot ICE damage chip."
+    }
+  ]
+}

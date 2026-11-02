@@ -1,0 +1,75 @@
+{
+  "items": [
+    {
+      "id": "arasaka",
+      "name": "Arasoft",
+      "description": "The megacorp that owns half the city. Pays well, watches everything.",
+      "color": "#4FA3FF",
+      "base_rep": 10,
+      "likes": [
+        "hosting",
+        "storage",
+        "courier"
+      ],
+      "dislikes": [
+        "data_broker",
+        "botnet"
+      ]
+    },
+    {
+      "id": "glitch_collective",
+      "name": "The Glitch Collective",
+      "description": "Decentralized hacker collective. Loves data and chaos.",
+      "color": "#39FF14",
+      "base_rep": 0,
+      "likes": [
+        "data_broker",
+        "hosting"
+      ],
+      "dislikes": [
+        "botnet"
+      ]
+    },
+    {
+      "id": "neon_serpents",
+      "name": "Neon Serpents",
+      "description": "Street gang running protection rackets and botnets.",
+      "color": "#FF00A0",
+      "base_rep": -10,
+      "likes": [
+        "botnet",
+        "courier"
+      ],
+      "dislikes": [
+        "data_broker"
+      ]
+    },
+    {
+      "id": "citynet",
+      "name": "CityNet Security",
+      "description": "Law enforcement's cyber division. Hates criminals.",
+      "color": "#FFD700",
+      "base_rep": 20,
+      "likes": [
+        "courier"
+      ],
+      "dislikes": [
+        "botnet",
+        "data_broker"
+      ]
+    },
+    {
+      "id": "loa",
+      "name": "The Loa",
+      "description": "Mystic netrunners who worship the machine spirits.",
+      "color": "#B26BFF",
+      "base_rep": 0,
+      "likes": [
+        "data_broker"
+      ],
+      "dislikes": [
+        "botnet"
+      ]
+    }
+  ]
+}

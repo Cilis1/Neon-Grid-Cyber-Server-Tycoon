@@ -1,0 +1,1199 @@
+{
+  "items": [
+    {
+      "id": "hw_rack_t1",
+      "name": "Scav Rack 12U",
+      "type": "rack",
+      "tier": 1,
+      "price": 800,
+      "power_draw": 10,
+      "heat_output": 5,
+      "durability": 100,
+      "noise": 20,
+      "stats": {
+        "slots_u": 12
+      },
+      "size_u": 1,
+      "slot_type": "",
+      "compatibility": [],
+      "description": "A rattling second-hand rack. 12U."
+    },
+    {
+      "id": "hw_rack_t2",
+      "name": "Consumer Rack 24U",
+      "type": "rack",
+      "tier": 2,
+      "price": 2500,
+      "power_draw": 15,
+      "heat_output": 8,
+      "durability": 100,
+      "noise": 20,
+      "stats": {
+        "slots_u": 24
+      },
+      "size_u": 1,
+      "slot_type": "",
+      "compatibility": [],
+      "description": "Solid 24U rack for a growing operation."
+    },
+    {
+      "id": "hw_rack_t3",
+      "name": "Prosumer Rack 42U",
+      "type": "rack",
+      "tier": 3,
+      "price": 8000,
+      "power_draw": 25,
+      "heat_output": 12,
+      "durability": 100,
+      "noise": 20,
+      "stats": {
+        "slots_u": 42
+      },
+      "size_u": 1,
+      "slot_type": "",
+      "compatibility": [],
+      "description": "Full-height 42U prosumer cabinet."
+    },
+    {
+      "id": "hw_rack_t4",
+      "name": "Enterprise Cabinet 48U",
+      "type": "rack",
+      "tier": 4,
+      "price": 25000,
+      "power_draw": 40,
+      "heat_output": 20,
+      "durability": 100,
+      "noise": 20,
+      "stats": {
+        "slots_u": 48
+      },
+      "size_u": 1,
+      "slot_type": "",
+      "compatibility": [],
+      "description": "Datacenter-grade 48U cabinet with cable arms."
+    },
+    {
+      "id": "hw_rack_t5",
+      "name": "Military Hardened Rack",
+      "type": "rack",
+      "tier": 5,
+      "price": 90000,
+      "power_draw": 60,
+      "heat_output": 30,
+      "durability": 100,
+      "noise": 20,
+      "stats": {
+        "slots_u": 48
+      },
+      "size_u": 1,
+      "slot_type": "",
+      "compatibility": [],
+      "description": "EMP-hardened mil-spec rack. Overkill? Maybe."
+    },
+    {
+      "id": "hw_server_t1",
+      "name": "Scrapbox 1U",
+      "type": "server_unit",
+      "tier": 1,
+      "price": 600,
+      "power_draw": 60,
+      "heat_output": 50,
+      "durability": 100,
+      "noise": 20,
+      "stats": {
+        "compute": 1
+      },
+      "size_u": 1,
+      "slot_type": "",
+      "compatibility": [],
+      "description": "Barely a server. 1U."
+    },
+    {
+      "id": "hw_server_t2",
+      "name": "Tower Rig 2U",
+      "type": "server_unit",
+      "tier": 2,
+      "price": 2000,
+      "power_draw": 120,
+      "heat_output": 100,
+      "durability": 100,
+      "noise": 20,
+      "stats": {
+        "compute": 4
+      },
+      "size_u": 2,
+      "slot_type": "",
+      "compatibility": [],
+      "description": "Repurposed tower in a 2U case."
+    },
+    {
+      "id": "hw_server_t3",
+      "name": "Blade Chassis 4U",
+      "type": "server_unit",
+      "tier": 3,
+      "price": 7000,
+      "power_draw": 250,
+      "heat_output": 220,
+      "durability": 100,
+      "noise": 20,
+      "stats": {
+        "compute": 12
+      },
+      "size_u": 4,
+      "slot_type": "",
+      "compatibility": [],
+      "description": "4U blade chassis."
+    },
+    {
+      "id": "hw_server_t4",
+      "name": "Enterprise 4U Node",
+      "type": "server_unit",
+      "tier": 4,
+      "price": 22000,
+      "power_draw": 500,
+      "heat_output": 450,
+      "durability": 100,
+      "noise": 20,
+      "stats": {
+        "compute": 32
+      },
+      "size_u": 4,
+      "slot_type": "",
+      "compatibility": [],
+      "description": "Enterprise-grade 4U compute node."
+    },
+    {
+      "id": "hw_server_t5",
+      "name": "Quantum Node 4U",
+      "type": "server_unit",
+      "tier": 5,
+      "price": 80000,
+      "power_draw": 1200,
+      "heat_output": 1000,
+      "durability": 100,
+      "noise": 20,
+      "stats": {
+        "compute": 128
+      },
+      "size_u": 4,
+      "slot_type": "",
+      "compatibility": [],
+      "description": "Experimental quantum-hybrid node."
+    },
+    {
+      "id": "hw_cpu_t1",
+      "name": "Dual-Core Salvage",
+      "type": "cpu",
+      "tier": 1,
+      "price": 150,
+      "power_draw": 45,
+      "heat_output": 40,
+      "durability": 100,
+      "noise": 20,
+      "stats": {
+        "ghz": 2.4,
+        "cores": 2
+      },
+      "size_u": 1,
+      "slot_type": "cpu",
+      "compatibility": [],
+      "description": "Pulled from a dumpster."
+    },
+    {
+      "id": "hw_cpu_t2",
+      "name": "Quad-Core Consumer",
+      "type": "cpu",
+      "tier": 2,
+      "price": 400,
+      "power_draw": 65,
+      "heat_output": 60,
+      "durability": 100,
+      "noise": 20,
+      "stats": {
+        "ghz": 3.6,
+        "cores": 4
+      },
+      "size_u": 1,
+      "slot_type": "cpu",
+      "compatibility": [],
+      "description": "Respectable consumer quad-core."
+    },
+    {
+      "id": "hw_cpu_t3",
+      "name": "Octa-Core Enterprise",
+      "type": "cpu",
+      "tier": 3,
+      "price": 1200,
+      "power_draw": 95,
+      "heat_output": 85,
+      "durability": 100,
+      "noise": 20,
+      "stats": {
+        "ghz": 4.2,
+        "cores": 8
+      },
+      "size_u": 1,
+      "slot_type": "cpu",
+      "compatibility": [],
+      "description": "Server octa-core."
+    },
+    {
+      "id": "hw_cpu_t4",
+      "name": "16-Core Beast",
+      "type": "cpu",
+      "tier": 4,
+      "price": 3500,
+      "power_draw": 130,
+      "heat_output": 120,
+      "durability": 100,
+      "noise": 20,
+      "stats": {
+        "ghz": 4.8,
+        "cores": 16
+      },
+      "size_u": 1,
+      "slot_type": "cpu",
+      "compatibility": [],
+      "description": "16 cores of fury."
+    },
+    {
+      "id": "hw_cpu_t5",
+      "name": "Quantum CPU",
+      "type": "cpu",
+      "tier": 5,
+      "price": 12000,
+      "power_draw": 180,
+      "heat_output": 160,
+      "durability": 100,
+      "noise": 20,
+      "stats": {
+        "ghz": 6.4,
+        "cores": 32
+      },
+      "size_u": 1,
+      "slot_type": "cpu",
+      "compatibility": [],
+      "description": "Military quantum-assisted CPU."
+    },
+    {
+      "id": "hw_ram_t1",
+      "name": "8GB DDR3 Stick",
+      "type": "ram",
+      "tier": 1,
+      "price": 60,
+      "power_draw": 5,
+      "heat_output": 4,
+      "durability": 100,
+      "noise": 20,
+      "stats": {
+        "gb": 8
+      },
+      "size_u": 1,
+      "slot_type": "ram",
+      "compatibility": [],
+      "description": ""
+    },
+    {
+      "id": "hw_ram_t2",
+      "name": "32GB DDR4",
+      "type": "ram",
+      "tier": 2,
+      "price": 180,
+      "power_draw": 8,
+      "heat_output": 6,
+      "durability": 100,
+      "noise": 20,
+      "stats": {
+        "gb": 32
+      },
+      "size_u": 1,
+      "slot_type": "ram",
+      "compatibility": [],
+      "description": ""
+    },
+    {
+      "id": "hw_ram_t3",
+      "name": "128GB ECC",
+      "type": "ram",
+      "tier": 3,
+      "price": 600,
+      "power_draw": 12,
+      "heat_output": 10,
+      "durability": 100,
+      "noise": 20,
+      "stats": {
+        "gb": 128
+      },
+      "size_u": 1,
+      "slot_type": "ram",
+      "compatibility": [],
+      "description": ""
+    },
+    {
+      "id": "hw_ram_t4",
+      "name": "512GB DDR5",
+      "type": "ram",
+      "tier": 4,
+      "price": 2000,
+      "power_draw": 18,
+      "heat_output": 14,
+      "durability": 100,
+      "noise": 20,
+      "stats": {
+        "gb": 512
+      },
+      "size_u": 1,
+      "slot_type": "ram",
+      "compatibility": [],
+      "description": ""
+    },
+    {
+      "id": "hw_ram_t5",
+      "name": "2TB Optane",
+      "type": "ram",
+      "tier": 5,
+      "price": 7000,
+      "power_draw": 30,
+      "heat_output": 24,
+      "durability": 100,
+      "noise": 20,
+      "stats": {
+        "gb": 2048
+      },
+      "size_u": 1,
+      "slot_type": "ram",
+      "compatibility": [],
+      "description": ""
+    },
+    {
+      "id": "hw_storage_t1",
+      "name": "2TB HDD",
+      "type": "storage",
+      "tier": 1,
+      "price": 40,
+      "power_draw": 8,
+      "heat_output": 6,
+      "durability": 100,
+      "noise": 20,
+      "stats": {
+        "tb": 2
+      },
+      "size_u": 1,
+      "slot_type": "storage",
+      "compatibility": [],
+      "description": ""
+    },
+    {
+      "id": "hw_storage_t2",
+      "name": "4TB SATA SSD",
+      "type": "storage",
+      "tier": 2,
+      "price": 120,
+      "power_draw": 6,
+      "heat_output": 5,
+      "durability": 100,
+      "noise": 20,
+      "stats": {
+        "tb": 4
+      },
+      "size_u": 1,
+      "slot_type": "storage",
+      "compatibility": [],
+      "description": ""
+    },
+    {
+      "id": "hw_storage_t3",
+      "name": "16TB NVMe",
+      "type": "storage",
+      "tier": 3,
+      "price": 400,
+      "power_draw": 10,
+      "heat_output": 8,
+      "durability": 100,
+      "noise": 20,
+      "stats": {
+        "tb": 16
+      },
+      "size_u": 1,
+      "slot_type": "storage",
+      "compatibility": [],
+      "description": ""
+    },
+    {
+      "id": "hw_storage_t4",
+      "name": "100TB Datacenter SSD",
+      "type": "storage",
+      "tier": 4,
+      "price": 1500,
+      "power_draw": 25,
+      "heat_output": 20,
+      "durability": 100,
+      "noise": 20,
+      "stats": {
+        "tb": 100
+      },
+      "size_u": 1,
+      "slot_type": "storage",
+      "compatibility": [],
+      "description": ""
+    },
+    {
+      "id": "hw_storage_t5",
+      "name": "1PB Quantum Array",
+      "type": "storage",
+      "tier": 5,
+      "price": 6000,
+      "power_draw": 60,
+      "heat_output": 50,
+      "durability": 100,
+      "noise": 20,
+      "stats": {
+        "tb": 1000
+      },
+      "size_u": 1,
+      "slot_type": "storage",
+      "compatibility": [],
+      "description": ""
+    },
+    {
+      "id": "hw_psu_t1",
+      "name": "450W PSU",
+      "type": "psu",
+      "tier": 1,
+      "price": 80,
+      "power_draw": 15,
+      "heat_output": 10,
+      "durability": 100,
+      "noise": 20,
+      "stats": {
+        "wattage": 450
+      },
+      "size_u": 1,
+      "slot_type": "psu",
+      "compatibility": [],
+      "description": ""
+    },
+    {
+      "id": "hw_psu_t2",
+      "name": "750W 80+ Gold",
+      "type": "psu",
+      "tier": 2,
+      "price": 200,
+      "power_draw": 20,
+      "heat_output": 15,
+      "durability": 100,
+      "noise": 20,
+      "stats": {
+        "wattage": 750
+      },
+      "size_u": 1,
+      "slot_type": "psu",
+      "compatibility": [],
+      "description": ""
+    },
+    {
+      "id": "hw_psu_t3",
+      "name": "1200W Platinum",
+      "type": "psu",
+      "tier": 3,
+      "price": 700,
+      "power_draw": 30,
+      "heat_output": 22,
+      "durability": 100,
+      "noise": 20,
+      "stats": {
+        "wattage": 1200
+      },
+      "size_u": 1,
+      "slot_type": "psu",
+      "compatibility": [],
+      "description": ""
+    },
+    {
+      "id": "hw_psu_t4",
+      "name": "2000W Titanium",
+      "type": "psu",
+      "tier": 4,
+      "price": 2200,
+      "power_draw": 45,
+      "heat_output": 35,
+      "durability": 100,
+      "noise": 20,
+      "stats": {
+        "wattage": 2000
+      },
+      "size_u": 1,
+      "slot_type": "psu",
+      "compatibility": [],
+      "description": ""
+    },
+    {
+      "id": "hw_psu_t5",
+      "name": "3200W Redundant",
+      "type": "psu",
+      "tier": 5,
+      "price": 8000,
+      "power_draw": 60,
+      "heat_output": 50,
+      "durability": 100,
+      "noise": 20,
+      "stats": {
+        "wattage": 3200
+      },
+      "size_u": 1,
+      "slot_type": "psu",
+      "compatibility": [],
+      "description": ""
+    },
+    {
+      "id": "hw_fan_t1",
+      "name": "Stock Fan",
+      "type": "fan",
+      "tier": 1,
+      "price": 25,
+      "power_draw": 3,
+      "heat_output": 0,
+      "durability": 100,
+      "noise": 20,
+      "stats": {
+        "cooling_w": 60
+      },
+      "size_u": 1,
+      "slot_type": "fan",
+      "compatibility": [],
+      "description": ""
+    },
+    {
+      "id": "hw_fan_t2",
+      "name": "High-Airflow Fan",
+      "type": "fan",
+      "tier": 2,
+      "price": 70,
+      "power_draw": 5,
+      "heat_output": 0,
+      "durability": 100,
+      "noise": 20,
+      "stats": {
+        "cooling_w": 120
+      },
+      "size_u": 1,
+      "slot_type": "fan",
+      "compatibility": [],
+      "description": ""
+    },
+    {
+      "id": "hw_fan_t3",
+      "name": "Industrial Fan",
+      "type": "fan",
+      "tier": 3,
+      "price": 200,
+      "power_draw": 10,
+      "heat_output": 0,
+      "durability": 100,
+      "noise": 20,
+      "stats": {
+        "cooling_w": 250
+      },
+      "size_u": 1,
+      "slot_type": "fan",
+      "compatibility": [],
+      "description": ""
+    },
+    {
+      "id": "hw_fan_t4",
+      "name": "Delta Server Fan",
+      "type": "fan",
+      "tier": 4,
+      "price": 600,
+      "power_draw": 18,
+      "heat_output": 0,
+      "durability": 100,
+      "noise": 20,
+      "stats": {
+        "cooling_w": 500
+      },
+      "size_u": 1,
+      "slot_type": "fan",
+      "compatibility": [],
+      "description": ""
+    },
+    {
+      "id": "hw_cooler_t1",
+      "name": "Box Fan",
+      "type": "cooler",
+      "tier": 1,
+      "price": 150,
+      "power_draw": 40,
+      "heat_output": 0,
+      "durability": 100,
+      "noise": 20,
+      "stats": {
+        "cooling_w": 600
+      },
+      "size_u": 1,
+      "slot_type": "",
+      "compatibility": [],
+      "description": "A fan. It blows."
+    },
+    {
+      "id": "hw_cooler_t2",
+      "name": "Portable AC",
+      "type": "cooler",
+      "tier": 2,
+      "price": 800,
+      "power_draw": 300,
+      "heat_output": 0,
+      "durability": 100,
+      "noise": 20,
+      "stats": {
+        "cooling_w": 2000
+      },
+      "size_u": 1,
+      "slot_type": "",
+      "compatibility": [],
+      "description": "Window AC unit duct-taped in."
+    },
+    {
+      "id": "hw_cooler_t3",
+      "name": "CRAC Unit",
+      "type": "cooler",
+      "tier": 3,
+      "price": 3000,
+      "power_draw": 1200,
+      "heat_output": 0,
+      "durability": 100,
+      "noise": 20,
+      "stats": {
+        "cooling_w": 8000
+      },
+      "size_u": 1,
+      "slot_type": "",
+      "compatibility": [],
+      "description": "Computer room air conditioner."
+    },
+    {
+      "id": "hw_cooler_t4",
+      "name": "Liquid Cooling Loop",
+      "type": "cooler",
+      "tier": 4,
+      "price": 12000,
+      "power_draw": 2500,
+      "heat_output": 0,
+      "durability": 100,
+      "noise": 20,
+      "stats": {
+        "cooling_w": 25000
+      },
+      "size_u": 1,
+      "slot_type": "",
+      "compatibility": [],
+      "description": "Room-wide liquid loop."
+    },
+    {
+      "id": "hw_cooler_t5",
+      "name": "Phase-Change Cooler",
+      "type": "cooler",
+      "tier": 5,
+      "price": 40000,
+      "power_draw": 5000,
+      "heat_output": 0,
+      "durability": 100,
+      "noise": 20,
+      "stats": {
+        "cooling_w": 80000
+      },
+      "size_u": 1,
+      "slot_type": "",
+      "compatibility": [],
+      "description": "Military phase-change cooling."
+    },
+    {
+      "id": "hw_switch_t1",
+      "name": "8-Port Switch",
+      "type": "switch",
+      "tier": 1,
+      "price": 100,
+      "power_draw": 15,
+      "heat_output": 10,
+      "durability": 100,
+      "noise": 20,
+      "stats": {
+        "mbps": 100
+      },
+      "size_u": 1,
+      "slot_type": "",
+      "compatibility": [],
+      "description": "Bottom-shelf 8-port switch."
+    },
+    {
+      "id": "hw_switch_t2",
+      "name": "Gigabit Switch 24p",
+      "type": "switch",
+      "tier": 2,
+      "price": 400,
+      "power_draw": 40,
+      "heat_output": 25,
+      "durability": 100,
+      "noise": 20,
+      "stats": {
+        "mbps": 1000
+      },
+      "size_u": 1,
+      "slot_type": "",
+      "compatibility": [],
+      "description": "24-port gigabit switch."
+    },
+    {
+      "id": "hw_switch_t3",
+      "name": "10Gb Core Switch",
+      "type": "switch",
+      "tier": 3,
+      "price": 2500,
+      "power_draw": 120,
+      "heat_output": 80,
+      "durability": 100,
+      "noise": 20,
+      "stats": {
+        "mbps": 10000
+      },
+      "size_u": 1,
+      "slot_type": "",
+      "compatibility": [],
+      "description": "10GbE core switch."
+    },
+    {
+      "id": "hw_nic_t1",
+      "name": "100Mbps NIC",
+      "type": "network_card",
+      "tier": 1,
+      "price": 40,
+      "power_draw": 5,
+      "heat_output": 3,
+      "durability": 100,
+      "noise": 20,
+      "stats": {
+        "mbps": 100
+      },
+      "size_u": 1,
+      "slot_type": "nic",
+      "compatibility": [],
+      "description": ""
+    },
+    {
+      "id": "hw_nic_t2",
+      "name": "1Gbps NIC",
+      "type": "network_card",
+      "tier": 2,
+      "price": 150,
+      "power_draw": 8,
+      "heat_output": 5,
+      "durability": 100,
+      "noise": 20,
+      "stats": {
+        "mbps": 1000
+      },
+      "size_u": 1,
+      "slot_type": "nic",
+      "compatibility": [],
+      "description": ""
+    },
+    {
+      "id": "hw_nic_t3",
+      "name": "10Gbps NIC",
+      "type": "network_card",
+      "tier": 3,
+      "price": 600,
+      "power_draw": 15,
+      "heat_output": 10,
+      "durability": 100,
+      "noise": 20,
+      "stats": {
+        "mbps": 10000
+      },
+      "size_u": 1,
+      "slot_type": "nic",
+      "compatibility": [],
+      "description": ""
+    },
+    {
+      "id": "hw_pdu_t1",
+      "name": "Power Strip 3kW",
+      "type": "pdu",
+      "tier": 1,
+      "price": 200,
+      "power_draw": 10,
+      "heat_output": 5,
+      "durability": 100,
+      "noise": 20,
+      "stats": {
+        "capacity_w": 3000
+      },
+      "size_u": 1,
+      "slot_type": "",
+      "compatibility": [],
+      "description": "A glorified power strip."
+    },
+    {
+      "id": "hw_pdu_t2",
+      "name": "Rack PDU 6kW",
+      "type": "pdu",
+      "tier": 2,
+      "price": 900,
+      "power_draw": 20,
+      "heat_output": 10,
+      "durability": 100,
+      "noise": 20,
+      "stats": {
+        "capacity_w": 6000
+      },
+      "size_u": 1,
+      "slot_type": "",
+      "compatibility": [],
+      "description": "Metered rack PDU."
+    },
+    {
+      "id": "hw_pdu_t3",
+      "name": "Smart PDU 10kW",
+      "type": "pdu",
+      "tier": 3,
+      "price": 3000,
+      "power_draw": 40,
+      "heat_output": 20,
+      "durability": 100,
+      "noise": 20,
+      "stats": {
+        "capacity_w": 10000
+      },
+      "size_u": 1,
+      "slot_type": "",
+      "compatibility": [],
+      "description": "Smart PDU with per-outlet metering."
+    },
+    {
+      "id": "hw_pdu_t4",
+      "name": "Industrial PDU 20kW",
+      "type": "pdu",
+      "tier": 4,
+      "price": 9000,
+      "power_draw": 60,
+      "heat_output": 30,
+      "durability": 100,
+      "noise": 20,
+      "stats": {
+        "capacity_w": 20000
+      },
+      "size_u": 1,
+      "slot_type": "",
+      "compatibility": [],
+      "description": "Industrial three-phase PDU."
+    },
+    {
+      "id": "hw_pdu_t5",
+      "name": "Grid-Tie PDU 50kW",
+      "type": "pdu",
+      "tier": 5,
+      "price": 30000,
+      "power_draw": 100,
+      "heat_output": 50,
+      "durability": 100,
+      "noise": 20,
+      "stats": {
+        "capacity_w": 50000
+      },
+      "size_u": 1,
+      "slot_type": "",
+      "compatibility": [],
+      "description": "Ties directly into the city grid."
+    },
+    {
+      "id": "hw_ups_t1",
+      "name": "UPS 1.5kW",
+      "type": "ups",
+      "tier": 1,
+      "price": 500,
+      "power_draw": 30,
+      "heat_output": 15,
+      "durability": 100,
+      "noise": 20,
+      "stats": {
+        "capacity_w": 1500,
+        "battery_min": 30
+      },
+      "size_u": 1,
+      "slot_type": "",
+      "compatibility": [],
+      "description": "Keeps the lights on for 30 min."
+    },
+    {
+      "id": "hw_ups_t2",
+      "name": "UPS 5kW",
+      "type": "ups",
+      "tier": 2,
+      "price": 2500,
+      "power_draw": 60,
+      "heat_output": 30,
+      "durability": 100,
+      "noise": 20,
+      "stats": {
+        "capacity_w": 5000,
+        "battery_min": 120
+      },
+      "size_u": 1,
+      "slot_type": "",
+      "compatibility": [],
+      "description": "2 hours of battery."
+    },
+    {
+      "id": "hw_ups_t3",
+      "name": "Generator UPS 20kW",
+      "type": "ups",
+      "tier": 3,
+      "price": 12000,
+      "power_draw": 150,
+      "heat_output": 80,
+      "durability": 100,
+      "noise": 20,
+      "stats": {
+        "capacity_w": 20000,
+        "battery_min": 480
+      },
+      "size_u": 1,
+      "slot_type": "",
+      "compatibility": [],
+      "description": "Diesel generator backup."
+    },
+    {
+      "id": "hw_gpu_t1",
+      "name": "Old Gaming GPU",
+      "type": "gpu",
+      "tier": 1,
+      "price": 300,
+      "power_draw": 120,
+      "heat_output": 110,
+      "durability": 100,
+      "noise": 20,
+      "stats": {
+        "hash_mh": 25,
+        "compute": 2
+      },
+      "size_u": 1,
+      "slot_type": "pcie",
+      "compatibility": [],
+      "description": "Mines at a crawl."
+    },
+    {
+      "id": "hw_gpu_t2",
+      "name": "Modern Gaming GPU",
+      "type": "gpu",
+      "tier": 2,
+      "price": 900,
+      "power_draw": 250,
+      "heat_output": 230,
+      "durability": 100,
+      "noise": 20,
+      "stats": {
+        "hash_mh": 120,
+        "compute": 8
+      },
+      "size_u": 1,
+      "slot_type": "pcie",
+      "compatibility": [],
+      "description": ""
+    },
+    {
+      "id": "hw_gpu_t3",
+      "name": "Datacenter GPU",
+      "type": "gpu",
+      "tier": 3,
+      "price": 3500,
+      "power_draw": 350,
+      "heat_output": 320,
+      "durability": 100,
+      "noise": 20,
+      "stats": {
+        "hash_mh": 600,
+        "compute": 32
+      },
+      "size_u": 1,
+      "slot_type": "pcie",
+      "compatibility": [],
+      "description": ""
+    },
+    {
+      "id": "hw_gpu_t4",
+      "name": "ASIC Miner",
+      "type": "gpu",
+      "tier": 4,
+      "price": 9000,
+      "power_draw": 900,
+      "heat_output": 800,
+      "durability": 100,
+      "noise": 20,
+      "stats": {
+        "hash_mh": 3000,
+        "compute": 4
+      },
+      "size_u": 1,
+      "slot_type": "pcie",
+      "compatibility": [],
+      "description": "Pure mining silicon."
+    },
+    {
+      "id": "hw_gpu_t5",
+      "name": "Quantum ASIC",
+      "type": "gpu",
+      "tier": 5,
+      "price": 40000,
+      "power_draw": 3000,
+      "heat_output": 2500,
+      "durability": 100,
+      "noise": 20,
+      "stats": {
+        "hash_mh": 50000,
+        "compute": 16
+      },
+      "size_u": 1,
+      "slot_type": "pcie",
+      "compatibility": [],
+      "description": ""
+    },
+    {
+      "id": "hw_cyberdeck_t1",
+      "name": "Pocket Deck",
+      "type": "cyberdeck",
+      "tier": 1,
+      "price": 1500,
+      "power_draw": 20,
+      "heat_output": 15,
+      "durability": 100,
+      "noise": 20,
+      "stats": {
+        "ram": 8,
+        "cpu": 1.0,
+        "shield": 100,
+        "slots": 4
+      },
+      "size_u": 1,
+      "slot_type": "",
+      "compatibility": [],
+      "description": "A jailbroken phone with a dongle."
+    },
+    {
+      "id": "hw_cyberdeck_t2",
+      "name": "Street Deck",
+      "type": "cyberdeck",
+      "tier": 2,
+      "price": 5000,
+      "power_draw": 40,
+      "heat_output": 30,
+      "durability": 100,
+      "noise": 20,
+      "stats": {
+        "ram": 16,
+        "cpu": 1.5,
+        "shield": 150,
+        "slots": 5
+      },
+      "size_u": 1,
+      "slot_type": "",
+      "compatibility": [],
+      "description": "Proper street cyberdeck."
+    },
+    {
+      "id": "hw_cyberdeck_t3",
+      "name": "Pro Deck",
+      "type": "cyberdeck",
+      "tier": 3,
+      "price": 18000,
+      "power_draw": 80,
+      "heat_output": 60,
+      "durability": 100,
+      "noise": 20,
+      "stats": {
+        "ram": 32,
+        "cpu": 2.0,
+        "shield": 250,
+        "slots": 6
+      },
+      "size_u": 1,
+      "slot_type": "",
+      "compatibility": [],
+      "description": "Corporate-grade deck."
+    },
+    {
+      "id": "hw_cyberdeck_t4",
+      "name": "Military Deck",
+      "type": "cyberdeck",
+      "tier": 4,
+      "price": 60000,
+      "power_draw": 150,
+      "heat_output": 120,
+      "durability": 100,
+      "noise": 20,
+      "stats": {
+        "ram": 64,
+        "cpu": 3.0,
+        "shield": 400,
+        "slots": 8
+      },
+      "size_u": 1,
+      "slot_type": "",
+      "compatibility": [],
+      "description": "Black-budget netrunning deck."
+    },
+    {
+      "id": "consumable_canned_air",
+      "name": "Canned Air",
+      "type": "consumable",
+      "tier": 1,
+      "price": 25,
+      "power_draw": 0,
+      "heat_output": 0,
+      "durability": 100,
+      "noise": 20,
+      "stats": {
+        "cleans": 100
+      },
+      "size_u": 1,
+      "slot_type": "",
+      "compatibility": [],
+      "description": "Blow the dust out of a component."
+    },
+    {
+      "id": "consumable_thermal_paste",
+      "name": "Thermal Paste",
+      "type": "consumable",
+      "tier": 1,
+      "price": 60,
+      "power_draw": 0,
+      "heat_output": 0,
+      "durability": 100,
+      "noise": 20,
+      "stats": {
+        "boost": 0.2
+      },
+      "size_u": 1,
+      "slot_type": "",
+      "compatibility": [],
+      "description": "Temporary cooling/performance boost."
+    },
+    {
+      "id": "consumable_energy_drink",
+      "name": "Neon Energy Drink",
+      "type": "consumable",
+      "tier": 1,
+      "price": 15,
+      "power_draw": 0,
+      "heat_output": 0,
+      "durability": 100,
+      "noise": 20,
+      "stats": {
+        "focus": 1
+      },
+      "size_u": 1,
+      "slot_type": "",
+      "compatibility": [],
+      "description": "+1 action point for one netrun (flavor)."
+    }
+  ]
+}
